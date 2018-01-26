@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  address: MyString
+  status: MyString
+  resolved_at: 2018-01-25 15:04:54
+
+two:
+  address: MyString
+  status: MyString
+  resolved_at: 2018-01-25 15:04:54
