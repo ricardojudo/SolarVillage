@@ -35,8 +35,8 @@ class PermitRequest < ApplicationRecord
 
         #
         random = Random.new.rand(100)
-        approve! if random < 25
-        deny! if random > 85
+        approve! if random < 30
+        deny! if random > 90
         resolved?
     end
 
