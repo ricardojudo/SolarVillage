@@ -4,6 +4,7 @@ class PermitRequestsController < ApplicationController
 
   # GET /permit_requests/1
   def show
+    @permit_request.resolve
     render json: @permit_request
   end
 
