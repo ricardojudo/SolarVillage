@@ -8,6 +8,14 @@
   <packaging>kjar</packaging>
   <name>new-order-permitting-kjar</name>
   <description>BPM Suite artifacts</description>
+  <dependencies>
+    <dependency>
+      <groupId>ricardojudo.</groupId>
+      <artifactId>solar-village-domain-model</artifactId>
+      <version>1.0</version>
+      <scope>compile</scope>
+    </dependency>
+  </dependencies>
   <repositories>
     <repository>
       <id>guvnor-m2-repo</id>
