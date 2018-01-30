@@ -13,6 +13,7 @@
   <bpmn2:itemDefinition id="__B6FBC450-ECFC-4A0F-93E6-09B4FDB9595D_ResultOutputXItem" structureRef="java.lang.Object"/>
   <bpmn2:process id="new-order-permitting-kjar.GovermentPermitRequest" drools:packageName="ricardojudo.new_order" drools:version="1.0" name="GovermentPermitRequest" isExecutable="true">
     <bpmn2:property id="address" itemSubjectRef="_addressItem"/>
+    <bpmn2:property id="permitRequest" itemSubjectRef="_permitRequest"/>
     <bpmn2:startEvent id="processStartEvent" drools:selectable="true" color:background-color="#9acd32" color:border-color="#000000" color:color="#000000" name="">
       <bpmn2:extensionElements>
         <drools:metaData name="elementname">
