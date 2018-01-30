@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn2:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.omg.org/bpmn20" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:bpsim="http://www.bpsim.org/schemas/1.0" xmlns:color="http://www.omg.org/spec/BPMN/non-normative/color" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:drools="http://www.jboss.org/drools" id="_rmco0AVXEeiQk68D4h2OEQ" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd http://www.jboss.org/drools drools.xsd http://www.bpsim.org/schemas/1.0 bpsim.xsd" exporter="jBPM Designer" exporterVersion="6.2.0" expressionLanguage="http://www.mvel.org/2.0" targetNamespace="http://www.omg.org/bpmn20" typeLanguage="http://www.java.com/javaTypes">
+<bpmn2:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.omg.org/bpmn20" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:bpsim="http://www.bpsim.org/schemas/1.0" xmlns:color="http://www.omg.org/spec/BPMN/non-normative/color" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:drools="http://www.jboss.org/drools" id="_6QliAAVXEeiQk68D4h2OEQ" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd http://www.jboss.org/drools drools.xsd http://www.bpsim.org/schemas/1.0 bpsim.xsd" exporter="jBPM Designer" exporterVersion="6.2.0" expressionLanguage="http://www.mvel.org/2.0" targetNamespace="http://www.omg.org/bpmn20" typeLanguage="http://www.java.com/javaTypes">
   <bpmn2:itemDefinition id="_addressItem" structureRef="String"/>
-  <bpmn2:itemDefinition id="_permitRequestItem" structureRef="Object"/>
   <bpmn2:itemDefinition id="__B6FBC450-ECFC-4A0F-93E6-09B4FDB9595D_TaskNameInputXItem" structureRef="String"/>
   <bpmn2:itemDefinition id="__B6FBC450-ECFC-4A0F-93E6-09B4FDB9595D_MethodInputXItem" structureRef="String"/>
   <bpmn2:itemDefinition id="__B6FBC450-ECFC-4A0F-93E6-09B4FDB9595D_UrlInputXItem" structureRef="String"/>
@@ -14,7 +13,6 @@
   <bpmn2:itemDefinition id="__B6FBC450-ECFC-4A0F-93E6-09B4FDB9595D_ResultOutputXItem" structureRef="java.lang.Object"/>
   <bpmn2:process id="new-order-permitting-kjar.GovermentPermitRequest" drools:packageName="ricardojudo.new_order" drools:version="1.0" name="GovermentPermitRequest" isExecutable="true">
     <bpmn2:property id="address" itemSubjectRef="_addressItem"/>
-    <bpmn2:property id="permitRequest" itemSubjectRef="_permitRequestItem"/>
     <bpmn2:startEvent id="processStartEvent" drools:selectable="true" color:background-color="#9acd32" color:border-color="#000000" color:color="#000000" name="">
       <bpmn2:extensionElements>
         <drools:metaData name="elementname">
@@ -35,11 +33,11 @@
       </bpmn2:extensionElements>
       <bpmn2:incoming>_8ECF476A-F039-4574-A080-DFFAC14DE412</bpmn2:incoming>
       <bpmn2:outgoing>_EAACB8EE-1011-414C-B858-1FAC545501CF</bpmn2:outgoing>
-      <bpmn2:script><![CDATA[ricardojudo.solar_village.domain.PermitRequest permitRequest = new ricardojudo.solar_village.domain.PermitRequest();
+      <bpmn2:script><![CDATA[ricardojudo.solar_village.domain.PermitRequest __permitRequest = new ricardojudo.solar_village.domain.PermitRequest();
 
-permitRequest.setAddress(address);
+__permitRequest.setAddress(address);
   
-//kcontext.setVariable("permitRequest", permitRequest);]]></bpmn2:script>
+kcontext.setVariable("permitRequest", __permitRequest);]]></bpmn2:script>
     </bpmn2:scriptTask>
     <bpmn2:sequenceFlow id="_8ECF476A-F039-4574-A080-DFFAC14DE412" drools:selectable="true" color:background-color="#000000" color:border-color="#000000" color:color="#000000" sourceRef="processStartEvent" targetRef="_FC3D5E44-636D-4991-B49A-21DBCB87961B"/>
     <bpmn2:task id="_B6FBC450-ECFC-4A0F-93E6-09B4FDB9595D" drools:selectable="true" drools:taskName="Rest" color:background-color="#fafad2" color:border-color="#000000" color:color="#000000" name="Electrical Permit Request">
@@ -50,7 +48,7 @@ permitRequest.setAddress(address);
       </bpmn2:extensionElements>
       <bpmn2:incoming>_EAACB8EE-1011-414C-B858-1FAC545501CF</bpmn2:incoming>
       <bpmn2:outgoing>_79F50FAA-0829-439B-8D69-1CBA9181BA6E</bpmn2:outgoing>
-      <bpmn2:ioSpecification id="_rmdP4AVXEeiQk68D4h2OEQ">
+      <bpmn2:ioSpecification id="_6QliAQVXEeiQk68D4h2OEQ">
         <bpmn2:dataInput id="_B6FBC450-ECFC-4A0F-93E6-09B4FDB9595D_TaskNameInputX" drools:dtype="String" itemSubjectRef="__B6FBC450-ECFC-4A0F-93E6-09B4FDB9595D_TaskNameInputXItem" name="TaskName"/>
         <bpmn2:dataInput id="_B6FBC450-ECFC-4A0F-93E6-09B4FDB9595D_MethodInputX" drools:dtype="String" itemSubjectRef="__B6FBC450-ECFC-4A0F-93E6-09B4FDB9595D_MethodInputXItem" name="Method"/>
         <bpmn2:dataInput id="_B6FBC450-ECFC-4A0F-93E6-09B4FDB9595D_UrlInputX" drools:dtype="String" itemSubjectRef="__B6FBC450-ECFC-4A0F-93E6-09B4FDB9595D_UrlInputXItem" name="Url"/>
@@ -61,7 +59,7 @@ permitRequest.setAddress(address);
         <bpmn2:dataInput id="_B6FBC450-ECFC-4A0F-93E6-09B4FDB9595D_PasswordInputX" drools:dtype="String" itemSubjectRef="__B6FBC450-ECFC-4A0F-93E6-09B4FDB9595D_PasswordInputXItem" name="Password"/>
         <bpmn2:dataInput id="_B6FBC450-ECFC-4A0F-93E6-09B4FDB9595D_ConnectTimeoutInputX" drools:dtype="String" itemSubjectRef="__B6FBC450-ECFC-4A0F-93E6-09B4FDB9595D_ConnectTimeoutInputXItem" name="ConnectTimeout"/>
         <bpmn2:dataOutput id="_B6FBC450-ECFC-4A0F-93E6-09B4FDB9595D_ResultOutputX" drools:dtype="java.lang.Object" itemSubjectRef="__B6FBC450-ECFC-4A0F-93E6-09B4FDB9595D_ResultOutputXItem" name="Result"/>
-        <bpmn2:inputSet id="_rmdP4QVXEeiQk68D4h2OEQ">
+        <bpmn2:inputSet id="_6QmJEAVXEeiQk68D4h2OEQ">
           <bpmn2:dataInputRefs>_B6FBC450-ECFC-4A0F-93E6-09B4FDB9595D_MethodInputX</bpmn2:dataInputRefs>
           <bpmn2:dataInputRefs>_B6FBC450-ECFC-4A0F-93E6-09B4FDB9595D_UrlInputX</bpmn2:dataInputRefs>
           <bpmn2:dataInputRefs>_B6FBC450-ECFC-4A0F-93E6-09B4FDB9595D_ContentInputX</bpmn2:dataInputRefs>
@@ -72,36 +70,36 @@ permitRequest.setAddress(address);
           <bpmn2:dataInputRefs>_B6FBC450-ECFC-4A0F-93E6-09B4FDB9595D_ConnectTimeoutInputX</bpmn2:dataInputRefs>
           <bpmn2:dataInputRefs>_B6FBC450-ECFC-4A0F-93E6-09B4FDB9595D_TaskNameInputX</bpmn2:dataInputRefs>
         </bpmn2:inputSet>
-        <bpmn2:outputSet id="_rmdP4gVXEeiQk68D4h2OEQ">
+        <bpmn2:outputSet id="_6QmJEQVXEeiQk68D4h2OEQ">
           <bpmn2:dataOutputRefs>_B6FBC450-ECFC-4A0F-93E6-09B4FDB9595D_ResultOutputX</bpmn2:dataOutputRefs>
         </bpmn2:outputSet>
       </bpmn2:ioSpecification>
-      <bpmn2:dataInputAssociation id="_rmdP4wVXEeiQk68D4h2OEQ">
+      <bpmn2:dataInputAssociation id="_6QmJEgVXEeiQk68D4h2OEQ">
         <bpmn2:targetRef>_B6FBC450-ECFC-4A0F-93E6-09B4FDB9595D_TaskNameInputX</bpmn2:targetRef>
-        <bpmn2:assignment id="_rmdP5AVXEeiQk68D4h2OEQ">
-          <bpmn2:from xsi:type="bpmn2:tFormalExpression" id="_rmdP5QVXEeiQk68D4h2OEQ">Rest</bpmn2:from>
-          <bpmn2:to xsi:type="bpmn2:tFormalExpression" id="_rmdP5gVXEeiQk68D4h2OEQ">_B6FBC450-ECFC-4A0F-93E6-09B4FDB9595D_TaskNameInputX</bpmn2:to>
+        <bpmn2:assignment id="_6QmJEwVXEeiQk68D4h2OEQ">
+          <bpmn2:from xsi:type="bpmn2:tFormalExpression" id="_6QmJFAVXEeiQk68D4h2OEQ">Rest</bpmn2:from>
+          <bpmn2:to xsi:type="bpmn2:tFormalExpression" id="_6QmJFQVXEeiQk68D4h2OEQ">_B6FBC450-ECFC-4A0F-93E6-09B4FDB9595D_TaskNameInputX</bpmn2:to>
         </bpmn2:assignment>
       </bpmn2:dataInputAssociation>
-      <bpmn2:dataInputAssociation id="_rmdP5wVXEeiQk68D4h2OEQ">
+      <bpmn2:dataInputAssociation id="_6QmJFgVXEeiQk68D4h2OEQ">
         <bpmn2:targetRef>_B6FBC450-ECFC-4A0F-93E6-09B4FDB9595D_MethodInputX</bpmn2:targetRef>
-        <bpmn2:assignment id="_rmdP6AVXEeiQk68D4h2OEQ">
-          <bpmn2:from xsi:type="bpmn2:tFormalExpression" id="_rmdP6QVXEeiQk68D4h2OEQ"><![CDATA[POST]]></bpmn2:from>
-          <bpmn2:to xsi:type="bpmn2:tFormalExpression" id="_rmdP6gVXEeiQk68D4h2OEQ">_B6FBC450-ECFC-4A0F-93E6-09B4FDB9595D_MethodInputX</bpmn2:to>
+        <bpmn2:assignment id="_6QmJFwVXEeiQk68D4h2OEQ">
+          <bpmn2:from xsi:type="bpmn2:tFormalExpression" id="_6QmJGAVXEeiQk68D4h2OEQ"><![CDATA[POST]]></bpmn2:from>
+          <bpmn2:to xsi:type="bpmn2:tFormalExpression" id="_6QmJGQVXEeiQk68D4h2OEQ">_B6FBC450-ECFC-4A0F-93E6-09B4FDB9595D_MethodInputX</bpmn2:to>
         </bpmn2:assignment>
       </bpmn2:dataInputAssociation>
-      <bpmn2:dataInputAssociation id="_rmdP6wVXEeiQk68D4h2OEQ">
+      <bpmn2:dataInputAssociation id="_6QmJGgVXEeiQk68D4h2OEQ">
         <bpmn2:targetRef>_B6FBC450-ECFC-4A0F-93E6-09B4FDB9595D_UrlInputX</bpmn2:targetRef>
-        <bpmn2:assignment id="_rmdP7AVXEeiQk68D4h2OEQ">
-          <bpmn2:from xsi:type="bpmn2:tFormalExpression" id="_rmdP7QVXEeiQk68D4h2OEQ"><![CDATA[https://solar-goverment-services.herokuapp.com/permit_requests/create_electrical]]></bpmn2:from>
-          <bpmn2:to xsi:type="bpmn2:tFormalExpression" id="_rmdP7gVXEeiQk68D4h2OEQ">_B6FBC450-ECFC-4A0F-93E6-09B4FDB9595D_UrlInputX</bpmn2:to>
+        <bpmn2:assignment id="_6QmJGwVXEeiQk68D4h2OEQ">
+          <bpmn2:from xsi:type="bpmn2:tFormalExpression" id="_6QmJHAVXEeiQk68D4h2OEQ"><![CDATA[https://solar-goverment-services.herokuapp.com/permit_requests/create_electrical]]></bpmn2:from>
+          <bpmn2:to xsi:type="bpmn2:tFormalExpression" id="_6QmJHQVXEeiQk68D4h2OEQ">_B6FBC450-ECFC-4A0F-93E6-09B4FDB9595D_UrlInputX</bpmn2:to>
         </bpmn2:assignment>
       </bpmn2:dataInputAssociation>
-      <bpmn2:dataInputAssociation id="_rmdP7wVXEeiQk68D4h2OEQ">
+      <bpmn2:dataInputAssociation id="_6QmJHgVXEeiQk68D4h2OEQ">
         <bpmn2:targetRef>_B6FBC450-ECFC-4A0F-93E6-09B4FDB9595D_ContentTypeInputX</bpmn2:targetRef>
-        <bpmn2:assignment id="_rmdP8AVXEeiQk68D4h2OEQ">
-          <bpmn2:from xsi:type="bpmn2:tFormalExpression" id="_rmdP8QVXEeiQk68D4h2OEQ"><![CDATA[application/json]]></bpmn2:from>
-          <bpmn2:to xsi:type="bpmn2:tFormalExpression" id="_rmdP8gVXEeiQk68D4h2OEQ">_B6FBC450-ECFC-4A0F-93E6-09B4FDB9595D_ContentTypeInputX</bpmn2:to>
+        <bpmn2:assignment id="_6QmJHwVXEeiQk68D4h2OEQ">
+          <bpmn2:from xsi:type="bpmn2:tFormalExpression" id="_6QmJIAVXEeiQk68D4h2OEQ"><![CDATA[application/json]]></bpmn2:from>
+          <bpmn2:to xsi:type="bpmn2:tFormalExpression" id="_6QmJIQVXEeiQk68D4h2OEQ">_B6FBC450-ECFC-4A0F-93E6-09B4FDB9595D_ContentTypeInputX</bpmn2:to>
         </bpmn2:assignment>
       </bpmn2:dataInputAssociation>
     </bpmn2:task>
@@ -116,47 +114,47 @@ permitRequest.setAddress(address);
     <bpmn2:sequenceFlow id="_79F50FAA-0829-439B-8D69-1CBA9181BA6E" drools:selectable="true" color:background-color="#000000" color:border-color="#000000" color:color="#000000" sourceRef="_B6FBC450-ECFC-4A0F-93E6-09B4FDB9595D" targetRef="_3D769FF6-8A9D-40AE-AACF-0E2C601338EC"/>
     <bpmn2:sequenceFlow id="_EAACB8EE-1011-414C-B858-1FAC545501CF" drools:selectable="true" color:background-color="#000000" color:border-color="#000000" color:color="#000000" sourceRef="_FC3D5E44-636D-4991-B49A-21DBCB87961B" targetRef="_B6FBC450-ECFC-4A0F-93E6-09B4FDB9595D"/>
   </bpmn2:process>
-  <bpmndi:BPMNDiagram id="_rmdP8wVXEeiQk68D4h2OEQ">
-    <bpmndi:BPMNPlane id="_rmdP9AVXEeiQk68D4h2OEQ" bpmnElement="new-order-permitting-kjar.GovermentPermitRequest">
-      <bpmndi:BPMNShape id="_rmdP9QVXEeiQk68D4h2OEQ" bpmnElement="processStartEvent">
+  <bpmndi:BPMNDiagram id="_6QmJIgVXEeiQk68D4h2OEQ">
+    <bpmndi:BPMNPlane id="_6QmJIwVXEeiQk68D4h2OEQ" bpmnElement="new-order-permitting-kjar.GovermentPermitRequest">
+      <bpmndi:BPMNShape id="_6QmJJAVXEeiQk68D4h2OEQ" bpmnElement="processStartEvent">
         <dc:Bounds height="30.0" width="30.0" x="107.0" y="280.0"/>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="_rmdP9gVXEeiQk68D4h2OEQ" bpmnElement="_FC3D5E44-636D-4991-B49A-21DBCB87961B">
+      <bpmndi:BPMNShape id="_6QmJJQVXEeiQk68D4h2OEQ" bpmnElement="_FC3D5E44-636D-4991-B49A-21DBCB87961B">
         <dc:Bounds height="80.0" width="100.0" x="197.0" y="255.0"/>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="_rmdP9wVXEeiQk68D4h2OEQ" bpmnElement="_B6FBC450-ECFC-4A0F-93E6-09B4FDB9595D">
+      <bpmndi:BPMNShape id="_6QmJJgVXEeiQk68D4h2OEQ" bpmnElement="_B6FBC450-ECFC-4A0F-93E6-09B4FDB9595D">
         <dc:Bounds height="80.0" width="100.0" x="435.0" y="105.0"/>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="_rmdP-AVXEeiQk68D4h2OEQ" bpmnElement="_3D769FF6-8A9D-40AE-AACF-0E2C601338EC">
+      <bpmndi:BPMNShape id="_6QmJJwVXEeiQk68D4h2OEQ" bpmnElement="_3D769FF6-8A9D-40AE-AACF-0E2C601338EC">
         <dc:Bounds height="28.0" width="28.0" x="580.0" y="131.0"/>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="_rmdP-QVXEeiQk68D4h2OEQ" bpmnElement="_8ECF476A-F039-4574-A080-DFFAC14DE412" sourceElement="_rmdP9QVXEeiQk68D4h2OEQ" targetElement="_rmdP9gVXEeiQk68D4h2OEQ">
+      <bpmndi:BPMNEdge id="_6QmJKAVXEeiQk68D4h2OEQ" bpmnElement="_8ECF476A-F039-4574-A080-DFFAC14DE412" sourceElement="_6QmJJAVXEeiQk68D4h2OEQ" targetElement="_6QmJJQVXEeiQk68D4h2OEQ">
         <di:waypoint xsi:type="dc:Point" x="122.0" y="295.0"/>
         <di:waypoint xsi:type="dc:Point" x="247.0" y="295.0"/>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="_rmdP-gVXEeiQk68D4h2OEQ" bpmnElement="_79F50FAA-0829-439B-8D69-1CBA9181BA6E" sourceElement="_rmdP9wVXEeiQk68D4h2OEQ" targetElement="_rmdP-AVXEeiQk68D4h2OEQ">
+      <bpmndi:BPMNEdge id="_6QmJKQVXEeiQk68D4h2OEQ" bpmnElement="_79F50FAA-0829-439B-8D69-1CBA9181BA6E" sourceElement="_6QmJJgVXEeiQk68D4h2OEQ" targetElement="_6QmJJwVXEeiQk68D4h2OEQ">
         <di:waypoint xsi:type="dc:Point" x="485.0" y="145.0"/>
         <di:waypoint xsi:type="dc:Point" x="594.0" y="145.0"/>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="_rmdP-wVXEeiQk68D4h2OEQ" bpmnElement="_EAACB8EE-1011-414C-B858-1FAC545501CF" sourceElement="_rmdP9gVXEeiQk68D4h2OEQ" targetElement="_rmdP9wVXEeiQk68D4h2OEQ">
+      <bpmndi:BPMNEdge id="_6QmJKgVXEeiQk68D4h2OEQ" bpmnElement="_EAACB8EE-1011-414C-B858-1FAC545501CF" sourceElement="_6QmJJQVXEeiQk68D4h2OEQ" targetElement="_6QmJJgVXEeiQk68D4h2OEQ">
         <di:waypoint xsi:type="dc:Point" x="247.0" y="295.0"/>
         <di:waypoint xsi:type="dc:Point" x="485.0" y="145.0"/>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
-  <bpmn2:relationship id="_rmdP_AVXEeiQk68D4h2OEQ" type="BPSimData">
+  <bpmn2:relationship id="_6QmJKwVXEeiQk68D4h2OEQ" type="BPSimData">
     <bpmn2:extensionElements>
       <bpsim:BPSimData>
         <bpsim:Scenario xsi:type="bpsim:Scenario" id="default" name="Simulationscenario">
           <bpsim:ScenarioParameters xsi:type="bpsim:ScenarioParameters" baseTimeUnit="min"/>
-          <bpsim:ElementParameters xsi:type="bpsim:ElementParameters" elementRef="_8ECF476A-F039-4574-A080-DFFAC14DE412" id="_rmdP_QVXEeiQk68D4h2OEQ">
+          <bpsim:ElementParameters xsi:type="bpsim:ElementParameters" elementRef="_8ECF476A-F039-4574-A080-DFFAC14DE412" id="_6QmJLAVXEeiQk68D4h2OEQ">
             <bpsim:ControlParameters xsi:type="bpsim:ControlParameters">
               <bpsim:Probability xsi:type="bpsim:Parameter">
                 <bpsim:FloatingParameter value="100.0"/>
               </bpsim:Probability>
             </bpsim:ControlParameters>
           </bpsim:ElementParameters>
-          <bpsim:ElementParameters xsi:type="bpsim:ElementParameters" elementRef="_B6FBC450-ECFC-4A0F-93E6-09B4FDB9595D" id="_rmdP_gVXEeiQk68D4h2OEQ">
+          <bpsim:ElementParameters xsi:type="bpsim:ElementParameters" elementRef="_B6FBC450-ECFC-4A0F-93E6-09B4FDB9595D" id="_6QmJLQVXEeiQk68D4h2OEQ">
             <bpsim:TimeParameters xsi:type="bpsim:TimeParameters">
               <bpsim:ProcessingTime xsi:type="bpsim:Parameter">
                 <bpsim:UniformDistribution max="10.0" min="5.0"/>
@@ -168,7 +166,7 @@ permitRequest.setAddress(address);
               </bpsim:UnitCost>
             </bpsim:CostParameters>
           </bpsim:ElementParameters>
-          <bpsim:ElementParameters xsi:type="bpsim:ElementParameters" elementRef="_FC3D5E44-636D-4991-B49A-21DBCB87961B" id="_rmdP_wVXEeiQk68D4h2OEQ">
+          <bpsim:ElementParameters xsi:type="bpsim:ElementParameters" elementRef="_FC3D5E44-636D-4991-B49A-21DBCB87961B" id="_6QmJLgVXEeiQk68D4h2OEQ">
             <bpsim:TimeParameters xsi:type="bpsim:TimeParameters">
               <bpsim:ProcessingTime xsi:type="bpsim:Parameter">
                 <bpsim:UniformDistribution max="10.0" min="5.0"/>
@@ -180,21 +178,21 @@ permitRequest.setAddress(address);
               </bpsim:UnitCost>
             </bpsim:CostParameters>
           </bpsim:ElementParameters>
-          <bpsim:ElementParameters xsi:type="bpsim:ElementParameters" elementRef="_3D769FF6-8A9D-40AE-AACF-0E2C601338EC" id="_rmdQAAVXEeiQk68D4h2OEQ">
+          <bpsim:ElementParameters xsi:type="bpsim:ElementParameters" elementRef="_3D769FF6-8A9D-40AE-AACF-0E2C601338EC" id="_6QmJLwVXEeiQk68D4h2OEQ">
             <bpsim:TimeParameters xsi:type="bpsim:TimeParameters">
               <bpsim:ProcessingTime xsi:type="bpsim:Parameter">
                 <bpsim:UniformDistribution max="10.0" min="5.0"/>
               </bpsim:ProcessingTime>
             </bpsim:TimeParameters>
           </bpsim:ElementParameters>
-          <bpsim:ElementParameters xsi:type="bpsim:ElementParameters" elementRef="_EAACB8EE-1011-414C-B858-1FAC545501CF" id="_rmdQAQVXEeiQk68D4h2OEQ">
+          <bpsim:ElementParameters xsi:type="bpsim:ElementParameters" elementRef="_EAACB8EE-1011-414C-B858-1FAC545501CF" id="_6QmJMAVXEeiQk68D4h2OEQ">
             <bpsim:ControlParameters xsi:type="bpsim:ControlParameters">
               <bpsim:Probability xsi:type="bpsim:Parameter">
                 <bpsim:FloatingParameter value="100.0"/>
               </bpsim:Probability>
             </bpsim:ControlParameters>
           </bpsim:ElementParameters>
-          <bpsim:ElementParameters xsi:type="bpsim:ElementParameters" elementRef="processStartEvent" id="_rmdQAgVXEeiQk68D4h2OEQ">
+          <bpsim:ElementParameters xsi:type="bpsim:ElementParameters" elementRef="processStartEvent" id="_6QmJMQVXEeiQk68D4h2OEQ">
             <bpsim:TimeParameters xsi:type="bpsim:TimeParameters">
               <bpsim:ProcessingTime xsi:type="bpsim:Parameter">
                 <bpsim:UniformDistribution max="10.0" min="5.0"/>
@@ -206,7 +204,7 @@ permitRequest.setAddress(address);
               </bpsim:Probability>
             </bpsim:ControlParameters>
           </bpsim:ElementParameters>
-          <bpsim:ElementParameters xsi:type="bpsim:ElementParameters" elementRef="_79F50FAA-0829-439B-8D69-1CBA9181BA6E" id="_rmdQAwVXEeiQk68D4h2OEQ">
+          <bpsim:ElementParameters xsi:type="bpsim:ElementParameters" elementRef="_79F50FAA-0829-439B-8D69-1CBA9181BA6E" id="_6QmJMgVXEeiQk68D4h2OEQ">
             <bpsim:ControlParameters xsi:type="bpsim:ControlParameters">
               <bpsim:Probability xsi:type="bpsim:Parameter">
                 <bpsim:FloatingParameter value="100.0"/>
@@ -216,7 +214,7 @@ permitRequest.setAddress(address);
         </bpsim:Scenario>
       </bpsim:BPSimData>
     </bpmn2:extensionElements>
-    <bpmn2:source>_rmco0AVXEeiQk68D4h2OEQ</bpmn2:source>
-    <bpmn2:target>_rmco0AVXEeiQk68D4h2OEQ</bpmn2:target>
+    <bpmn2:source>_6QliAAVXEeiQk68D4h2OEQ</bpmn2:source>
+    <bpmn2:target>_6QliAAVXEeiQk68D4h2OEQ</bpmn2:target>
   </bpmn2:relationship>
 </bpmn2:definitions>
