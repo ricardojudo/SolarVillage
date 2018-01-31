@@ -41,5 +41,41 @@ RSpec.describe PermitRequest, type: :model do
       r = build(:permit_request, address: 'Calle falsa 123')
       expect(r).to be_invalid
     end
+
+    it 'uniqueness different type' do
+      expect(create(:permit_request, address: 'Calle falsa 123')).to be_valid
+      r = build(:permit_request, :structural, address: 'Calle falsa 123')
+      expect(r).to be_valid
+    end
+
+  end
+
+  describe 'Resolution' do
+    it 'Random' do
+      r = create(:permit_request)
+      #expect(r.resolved_at).to be_nil
+      attempt = 0
+      attempt += 1 until r.resolve
+      puts "Attempts: #{attempt}"
+      expect(r).to be_resolved
+      expect(r.resolved_at).to_not be_nil
+    end
+
+    it 'force approve' do
+      r = create(:permit_request, address: 'Calle falsa approve 123')
+      #expect(r.resolved_at).to be_nil
+      
+      expect(r.resolve).to be_truthy
+      expect(r).to be_approved
+      expect(r.resolved_at).to_not be_nil
+    end
+
+    it 'force deny' do
+      r = create(:permit_request, address: 'Calle falsa deny 123')
+      #expect(r.resolved_at).to be_nil
+      expect(r.resolve).to be_truthy
+      expect(r).to be_denied
+      expect(r.resolved_at).to_not be_nil
+    end
   end
 end

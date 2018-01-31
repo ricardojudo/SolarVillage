@@ -28,10 +28,25 @@ class PermitRequest < ApplicationRecord
 
     end
 
+    def resolve
+        #Exceptional cases
+        return approve! if address.include? 'approve'
+        return deny! if address.include? 'deny'
+
+        #
+        random = Random.new.rand(100)
+        approve! if random < 30
+        deny! if random > 90
+        resolved?
+    end
+
+    def resolved?
+        denied? || approved?    
+    end
+
     protected
     def _resolved_at
-        resolved_at = Time.zone.now
-        save
+        update(resolved_at: Time.zone.now) if resolved?
     end
 
 end
