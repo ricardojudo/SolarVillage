@@ -42,21 +42,7 @@
           <drools:metaValue><![CDATA[Build Permit Request]]></drools:metaValue>
         </drools:metaData>
         <drools:onExit-script scriptFormat="http://www.java.com/java">
-          <drools:script><![CDATA[System.out.println("Build Permit Request: " + permitRequest);
-
-
-
-
-
-
-
-
-
-
-
-
-
-]]></drools:script>
+          <drools:script><![CDATA[System.out.println("Build Permit Request: " + permitRequest);]]></drools:script>
         </drools:onExit-script>
       </bpmn2:extensionElements>
       <bpmn2:incoming>_8ECF476A-F039-4574-A080-DFFAC14DE412</bpmn2:incoming>
@@ -69,18 +55,7 @@ kcontext.setVariable("electricalPermitRequest", __permitRequest);
 __permitRequest = new ricardojudo.solar_village.domain.PermitRequest();
 __permitRequest.setAddress(address);  
 kcontext.setVariable("structuralPermitRequest", __permitRequest);
-
-
-/*
-java.lang.reflect.Field[] list =  ricardojudo.solar_village.domain.PermitRequest.class.getDeclaredFields();
-		for(java.lang.reflect.Field i : list){
-			System.out.println("\nField: "+i.getName());
-			for(java.lang.annotation.Annotation i2: i.getAnnotations()){
-				System.out.println(">>>Field: "+i2.annotationType().getSimpleName());
-			}
-		}
-
-*/]]></bpmn2:script>
+]]></bpmn2:script>
     </bpmn2:scriptTask>
     <bpmn2:sequenceFlow id="_8ECF476A-F039-4574-A080-DFFAC14DE412" drools:selectable="true" color:background-color="#000000" color:border-color="#000000" color:color="#000000" sourceRef="processStartEvent" targetRef="_FC3D5E44-636D-4991-B49A-21DBCB87961B"/>
     <bpmn2:task id="_B6FBC450-ECFC-4A0F-93E6-09B4FDB9595D" drools:selectable="true" drools:taskName="Rest" color:background-color="#fafad2" color:border-color="#000000" color:color="#000000" name="Electrical Permit Request">
@@ -89,17 +64,7 @@ java.lang.reflect.Field[] list =  ricardojudo.solar_village.domain.PermitRequest
           <drools:metaValue><![CDATA[Electrical Permit Request]]></drools:metaValue>
         </drools:metaData>
         <drools:onExit-script scriptFormat="http://www.java.com/java">
-          <drools:script><![CDATA[System.out.println("Electrical Permit Request: "+ electricalPermitRequest);
-
-
-
-
-
-
-
-
-
-]]></drools:script>
+          <drools:script><![CDATA[System.out.println("Electrical Permit Request: "+ electricalPermitRequest);]]></drools:script>
         </drools:onExit-script>
       </bpmn2:extensionElements>
       <bpmn2:incoming>_EAACB8EE-1011-414C-B858-1FAC545501CF</bpmn2:incoming>
@@ -192,11 +157,7 @@ java.lang.reflect.Field[] list =  ricardojudo.solar_village.domain.PermitRequest
           <drools:metaValue><![CDATA[Get Electrical Permit Status]]></drools:metaValue>
         </drools:metaData>
         <drools:onExit-script scriptFormat="http://www.java.com/java">
-          <drools:script><![CDATA[System.out.println("Electrical Permit status: " + electricalPermitRequest);
-
-
-
-]]></drools:script>
+          <drools:script><![CDATA[System.out.println("Electrical Permit status: " + electricalPermitRequest);]]></drools:script>
         </drools:onExit-script>
       </bpmn2:extensionElements>
       <bpmn2:incoming>_79F50FAA-0829-439B-8D69-1CBA9181BA6E</bpmn2:incoming>
@@ -273,9 +234,7 @@ java.lang.reflect.Field[] list =  ricardojudo.solar_village.domain.PermitRequest
           <drools:metaValue><![CDATA[Approved]]></drools:metaValue>
         </drools:metaData>
       </bpmn2:extensionElements>
-      <bpmn2:conditionExpression xsi:type="bpmn2:tFormalExpression" id="_V1r6AgbZEeidsZmzoFVqvA" language="http://www.java.com/java"><![CDATA[return  KieFunctions.isTrue( ((ricardojudo.solar_village.domain.PermitRequest) electricalPermitRequest).isApproved());
-//ricardojudo.solar_village.domain.PermitRequest __permitRequest = //(ricardojudo.solar_village.domain.PermitRequest) permitRequest
-//return  KieFunctions.isTrue(__permitRequest.isApproved());]]></bpmn2:conditionExpression>
+      <bpmn2:conditionExpression xsi:type="bpmn2:tFormalExpression" id="_V1r6AgbZEeidsZmzoFVqvA" language="http://www.java.com/java"><![CDATA[return  KieFunctions.isTrue( ((ricardojudo.solar_village.domain.PermitRequest) electricalPermitRequest).isApproved());]]></bpmn2:conditionExpression>
     </bpmn2:sequenceFlow>
     <bpmn2:exclusiveGateway id="_A2C02B98-036F-4E8B-BEB4-B41E4328BBE9" drools:selectable="true" drools:dg="" color:background-color="#f0e68c" color:border-color="#a67f00" color:color="#000000" name="" gatewayDirection="Diverging">
       <bpmn2:incoming>_DE2FCAE3-E19A-404C-B2FA-DFDC0825D8F1</bpmn2:incoming>
@@ -290,10 +249,7 @@ java.lang.reflect.Field[] list =  ricardojudo.solar_village.domain.PermitRequest
           <drools:metaValue><![CDATA[In Process]]></drools:metaValue>
         </drools:metaData>
       </bpmn2:extensionElements>
-      <bpmn2:conditionExpression xsi:type="bpmn2:tFormalExpression" id="_V1r6AwbZEeidsZmzoFVqvA" language="http://www.java.com/java"><![CDATA[return  KieFunctions.isTrue(((ricardojudo.solar_village.domain.PermitRequest)electricalPermitRequest).isInProgress());
-
-//System.out.println(permitRequest);
-//ricardojudo.solar_village.domain.PermitRequest __permitRequest = (ricardojudo.solar_village.domain.PermitRequest) permitRequest]]></bpmn2:conditionExpression>
+      <bpmn2:conditionExpression xsi:type="bpmn2:tFormalExpression" id="_V1r6AwbZEeidsZmzoFVqvA" language="http://www.java.com/java"><![CDATA[return  KieFunctions.isTrue(((ricardojudo.solar_village.domain.PermitRequest)electricalPermitRequest).isInProgress());]]></bpmn2:conditionExpression>
     </bpmn2:sequenceFlow>
     <bpmn2:exclusiveGateway id="_1D585BA6-7F9C-4706-8C0C-42882FB13C26" drools:selectable="true" drools:dg="" color:background-color="#f0e68c" color:border-color="#a67f00" color:color="#000000" name="" gatewayDirection="Converging">
       <bpmn2:incoming>_CE73C482-736A-41EF-A81F-DF6586D98471</bpmn2:incoming>
