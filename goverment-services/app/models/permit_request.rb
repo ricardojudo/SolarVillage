@@ -33,10 +33,13 @@ class PermitRequest < ApplicationRecord
         return approve! if address.include? 'approve'
         return deny! if address.include? 'deny'
 
+        approve_percentage = ENV['APPROVE_PERCENTAGE'] || 33
+        deny_percentage = ENV['DENY_PERCENTAGE'] || 33
+
         #
         random = Random.new.rand(100)
-        approve! if random < 30
-        deny! if random > 90
+        approve! if random < approve_percentage.to_i
+        deny! if random > (100 - deny_percentage.to_i)
         resolved?
     end
 
