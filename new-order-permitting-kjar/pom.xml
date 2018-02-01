@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>ricardojudo</groupId>
   <artifactId>new-order-permitting-kjar</artifactId>
-  <version>1.0</version>
+  <version>1.0.1</version>
   <packaging>kjar</packaging>
   <name>new-order-permitting-kjar</name>
   <description>BPM Suite artifacts</description>
