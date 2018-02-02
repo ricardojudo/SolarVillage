@@ -1,6 +1,9 @@
 package ricardojudo.solar_village.domain;
 
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class HoaMeeting implements Serializable {
@@ -20,6 +23,11 @@ public class HoaMeeting implements Serializable {
 
 	public void setDate(Date date) {
 		this.date = date;
+	}
+	
+	public void setDate(String date) throws ParseException{
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		this.date = dateFormat.parse(date);
 	}
 	
 	public Date getDate() {
@@ -56,6 +64,4 @@ public class HoaMeeting implements Serializable {
 				+ ", attendantDeparment=" + attendantDeparment + "]";
 	}
 	
-	
-
 }
