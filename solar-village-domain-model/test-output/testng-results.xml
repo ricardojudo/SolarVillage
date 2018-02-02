@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="7" passed="7">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="545" started-at="2018-02-02T00:10:32Z" finished-at="2018-02-02T00:10:32Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="545" started-at="2018-02-02T00:10:32Z" finished-at="2018-02-02T00:10:32Z">
+      <class name="ricardojudo.solar_village.domain.PermitRequestTest">
+        <test-method status="PASS" signature="testJsonMarshallingRequest()[pri:0, instance:ricardojudo.solar_village.domain.PermitRequestTest@47d384ee]" name="testJsonMarshallingRequest" duration-ms="114" started-at="2018-02-01T19:10:32Z" finished-at="2018-02-01T19:10:32Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testJsonMarshallingRequest -->
+        <test-method status="PASS" signature="testJsonMarshallingResponseInApproved()[pri:0, instance:ricardojudo.solar_village.domain.PermitRequestTest@47d384ee]" name="testJsonMarshallingResponseInApproved" duration-ms="57" started-at="2018-02-01T19:10:32Z" finished-at="2018-02-01T19:10:32Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testJsonMarshallingResponseInApproved -->
+        <test-method status="PASS" signature="testJsonMarshallingResponseInDenied()[pri:0, instance:ricardojudo.solar_village.domain.PermitRequestTest@47d384ee]" name="testJsonMarshallingResponseInDenied" duration-ms="1" started-at="2018-02-01T19:10:32Z" finished-at="2018-02-01T19:10:32Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testJsonMarshallingResponseInDenied -->
+        <test-method status="PASS" signature="testJsonMarshallingResponseInElectricalType()[pri:0, instance:ricardojudo.solar_village.domain.PermitRequestTest@47d384ee]" name="testJsonMarshallingResponseInElectricalType" duration-ms="1" started-at="2018-02-01T19:10:32Z" finished-at="2018-02-01T19:10:32Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testJsonMarshallingResponseInElectricalType -->
+        <test-method status="PASS" signature="testJsonMarshallingResponseInProgress()[pri:0, instance:ricardojudo.solar_village.domain.PermitRequestTest@47d384ee]" name="testJsonMarshallingResponseInProgress" duration-ms="0" started-at="2018-02-01T19:10:32Z" finished-at="2018-02-01T19:10:32Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testJsonMarshallingResponseInProgress -->
+        <test-method status="PASS" signature="testJsonMarshallingResponseInStructuralType()[pri:0, instance:ricardojudo.solar_village.domain.PermitRequestTest@47d384ee]" name="testJsonMarshallingResponseInStructuralType" duration-ms="0" started-at="2018-02-01T19:10:32Z" finished-at="2018-02-01T19:10:32Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testJsonMarshallingResponseInStructuralType -->
+      </class> <!-- ricardojudo.solar_village.domain.PermitRequestTest -->
+      <class name="ricardojudo.solar_village.domain.HoaMeetingTest">
+        <test-method status="PASS" signature="setUpBefore()[pri:0, instance:ricardojudo.solar_village.domain.HoaMeetingTest@483bf400]" name="setUpBefore" is-config="true" duration-ms="27" started-at="2018-02-01T19:10:32Z" finished-at="2018-02-01T19:10:32Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUpBefore -->
+        <test-method status="PASS" signature="setUpBefore()[pri:0, instance:ricardojudo.solar_village.domain.PermitRequestTest@47d384ee]" name="setUpBefore" is-config="true" duration-ms="310" started-at="2018-02-01T19:10:32Z" finished-at="2018-02-01T19:10:32Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUpBefore -->
+        <test-method status="PASS" signature="testSetDate_String()[pri:0, instance:ricardojudo.solar_village.domain.HoaMeetingTest@483bf400]" name="testSetDate_String" duration-ms="1" started-at="2018-02-01T19:10:32Z" finished-at="2018-02-01T19:10:32Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testSetDate_String -->
+      </class> <!-- ricardojudo.solar_village.domain.HoaMeetingTest -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
