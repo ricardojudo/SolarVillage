@@ -1,2 +1,5 @@
 /target/
 solar-village-domain-model/target
+.classpath 
+.project 
+.settings
