@@ -3,3 +3,4 @@ solar-village-domain-model/target
 .classpath 
 .project 
 .settings
+test-output
