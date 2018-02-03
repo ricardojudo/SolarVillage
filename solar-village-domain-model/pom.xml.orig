@@ -3,7 +3,11 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>ricardojudo</groupId>
 	<artifactId>solar-village-domain-model</artifactId>
+<<<<<<< HEAD
 	<version>1.0.5</version>
+=======
+	<version>1.0.4</version>
+>>>>>>> master
 	<name>solar-village-domain-model</name>
 	<description>Domain model for Solar Village New Order process</description>
 	<properties>

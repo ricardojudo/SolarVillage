@@ -3,4 +3,7 @@ solar-village-domain-model/target
 .classpath 
 .project 
 .settings
-solar-village-domain-model/test-output
+<<<<<<< HEAD
+test-output
+=======
+>>>>>>> master
