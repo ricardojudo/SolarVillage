@@ -17,7 +17,7 @@ public class HoaMeeting implements Serializable {
 
 	private Date date;
 
-	private Boolean approved;
+	private boolean approved;
 
 	private String attendant;
 
@@ -50,11 +50,11 @@ public class HoaMeeting implements Serializable {
 		return date;
 	}
 
-	public Boolean getApproved() {
+	public boolean isApproved() {
 		return approved;
 	}
 
-	public void setApproved(Boolean approved) {
+	public void setApproved(boolean approved) {
 		this.approved = approved;
 	}
 
