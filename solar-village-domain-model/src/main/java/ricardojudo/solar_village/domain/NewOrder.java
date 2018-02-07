@@ -143,7 +143,7 @@ public class NewOrder implements Serializable {
 
 	public static NewOrder getInstance() {
 		NewOrder newOrder = new NewOrder();
-		newOrder.setId(random.nextInt());
+		newOrder.setId(Math.abs(random.nextInt()));
 		return newOrder;
 	}
 

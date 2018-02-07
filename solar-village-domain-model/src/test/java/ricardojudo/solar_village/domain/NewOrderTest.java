@@ -3,7 +3,7 @@ package ricardojudo.solar_village.domain;
 import static org.testng.AssertJUnit.assertEquals;
 import static org.testng.Assert.assertNotNull;
 import static org.testng.Assert.assertTrue;
-import static org.testng.Assert.assertFalse;
+import static org.testng.Assert.*;
 
 import java.text.ParseException;
 import java.util.Date;
@@ -27,6 +27,7 @@ public class NewOrderTest {
 	public void getCondominiumInstanceTest() {
 		newOrder=NewOrder.getCondominiumInstance(new Date());
 		assertNotNull(newOrder.getId());
+		assertTrue(newOrder.getId() > 0);
 		assertNotNull(newOrder.getHoaMeeting());
 	}
 	@Test
