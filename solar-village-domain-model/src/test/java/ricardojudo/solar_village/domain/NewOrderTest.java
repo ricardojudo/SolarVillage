@@ -178,7 +178,7 @@ public class NewOrderTest {
 	@Test
 	public void isNew() {
 		newOrder = NewOrder.getInstance();
-		assertEquals(newOrder.getStatus(), NewOrder.Status.NEW);
+		assertEquals(newOrder.getStatus(), NewOrder.ProcessStatus.NEW);
 		assertTrue(newOrder.isNew());
 	}
 

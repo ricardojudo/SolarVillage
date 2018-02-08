@@ -17,14 +17,14 @@ public class NewOrder implements Serializable {
 	 */
 	private static final long serialVersionUID = -6825592040701582313L;
 
-	enum Status {
+	enum ProcessStatus {
 		NEW, IN_HOA_MEETING, REQ_GOV_PERMITS, COMPLETED
 	}
 
 	private static Random random = new Random();
 
 	private Integer id;
-	private Status status = Status.NEW;
+	private ProcessStatus status = ProcessStatus.NEW;
 	private String address;
 	private boolean condo;
 
@@ -42,11 +42,11 @@ public class NewOrder implements Serializable {
 		this.id = id;
 	}
 
-	public Status getStatus() {
+	public ProcessStatus getStatus() {
 		return status;
 	}
 
-	public void setStatus(Status status) {
+	public void setStatus(ProcessStatus status) {
 		this.status = status;
 	}
 
@@ -118,15 +118,15 @@ public class NewOrder implements Serializable {
 				break;
 		}
 		approved =  _tmp;
-		status = Status.COMPLETED;
+		status = ProcessStatus.COMPLETED;
 	}
 
 	public boolean isNew() {
-		return Status.NEW.equals(status);
+		return ProcessStatus.NEW.equals(status);
 	}
 
 	public boolean isCompleted() {
-		return Status.COMPLETED.equals(status);
+		return ProcessStatus.COMPLETED.equals(status);
 	}
 
 	// Permits
