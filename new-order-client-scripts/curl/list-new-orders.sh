@@ -1,11 +1,13 @@
-CONTAINER=http://0.0.0.0:8080/kie-server/services/rest/server/queries/containers/solar-village/process/instances
+#!/bin/bash
 
-URL=${CONTAINER}/processes
+CONTAINER_ID=solar-village
+PROCESS_DEFINITION=new-order-permitting-kjar.NewOrderProcess
+#URL=http://localhost:8080/kie-server/services/rest/server/queries/containers/${CONTAINER_ID}/process/instances
+URL=http://localhost:8080/kie-server/services/rest/server/queries/processes/${PROCESS_DEFINITION}/instances
 
+#Status 1=IN_PROGRESS 2=COMPLETED 3=ABORTED
 
-curl -X GET -H "Accept: application/json" --user jboss:bpms http://localhost:8080/kie-server/services/rest/server/queries/containers/solar-village/process/instances
+CURL="curl -X GET -H \"Accept: application/json\" --user jboss:bpms ${URL}"
 
-
-CURL="curl -X GET -H \"Accept: application/json\" -H \"Content-Type: application/json\" --user jboss:bpms -d  ${URL}"
-
+echo "CURL: ${CURL}"
 echo ${CURL} | bash
