@@ -82,10 +82,14 @@ public class NewOrder implements Serializable {
 		this.hoaMeeting = hoaMeeting;
 	}
 
+	
+
 	@Override
 	public String toString() {
-		return "NewOrder [status=" + status + ", address=" + address
-				+ ", condo=" + condo + "]";
+		return "NewOrder [id=" + id + ", status=" + status + ", address="
+				+ address + ", condo=" + condo + ", approved=" + approved
+				+ ", hoaMeeting=" + hoaMeeting + ", govermentPermits="
+				+ govermentPermits + "]";
 	}
 
 	//
