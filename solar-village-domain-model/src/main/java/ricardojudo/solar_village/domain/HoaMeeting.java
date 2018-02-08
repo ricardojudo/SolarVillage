@@ -76,7 +76,7 @@ public class HoaMeeting implements Serializable {
 
 	@Override
 	public String toString() {
-		return "HoaMeeting [approved=" + approved + ", attendant=" + attendant
+		return "HoaMeeting [date="+ date +", approved=" + approved + ", attendant=" + attendant
 				+ ", attendantDeparment=" + attendantDeparment + "]";
 	}
 
@@ -84,11 +84,11 @@ public class HoaMeeting implements Serializable {
 		return deadLine;
 	}
 
-	protected void setDeadLine(Date deadLine) {
+	public void setDeadLine(Date deadLine) {
 		this.deadLine = deadLine;
 	}
 
-	protected void setDaysForDeadLine(int deadLineInDays) {
+	public void setDaysForDeadLine(int deadLineInDays) {
 		throw new UnsupportedOperationException();
 	}
 	
