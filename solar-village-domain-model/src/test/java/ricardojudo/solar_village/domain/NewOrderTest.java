@@ -1,8 +1,6 @@
 package ricardojudo.solar_village.domain;
 
 import static org.testng.AssertJUnit.assertEquals;
-import static org.testng.Assert.assertNotNull;
-import static org.testng.Assert.assertTrue;
 import static org.testng.Assert.*;
 
 import java.text.ParseException;
@@ -10,6 +8,8 @@ import java.util.Date;
 
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import ricardojudo.solar_village.domain.PermitRequest.PermitType;
 import ricardojudo.solar_village.domain.PermitRequest.Status;
@@ -192,4 +192,56 @@ public class NewOrderTest {
 		return permitRequest;
 	}
 	
+	
+	
+	//JSON
+	
+		@Test
+		public void testJSONUnMarshalling_Condo() throws Exception{
+			ObjectMapper mapper= new ObjectMapper();
+			newOrder = NewOrder.getCondominiumInstance("2018-05-05");
+			newOrder.setAddress("123 Las Vegas Av");			
+			newOrder.add(buildPermit(true, PermitType.RESIDENTIAL_ELECTRIC));
+			newOrder.add(buildPermit(false, PermitType.RESIDENTIAL_STRUCTURAL));
+			
+			String value = mapper.writeValueAsString(newOrder);
+			System.out.println(value);
+			assertTrue(value.contains("Las Vegas Av"));
+			
+		}
+		
+		@Test
+		public void testJSONUnMarshalling_NoCondo() throws Exception{
+			ObjectMapper mapper= new ObjectMapper();
+			newOrder = NewOrder.getInstance();
+			newOrder.setAddress("123 Calle Av");
+			newOrder.add(buildPermit(true, PermitType.RESIDENTIAL_ELECTRIC));
+			newOrder.add(buildPermit(false, PermitType.RESIDENTIAL_STRUCTURAL));
+			
+			String value = mapper.writeValueAsString(newOrder);
+			
+			assertTrue(value.contains("123 Calle Av"));
+			
+		}
+		
+		@Test
+		public void testJSONUnMarshalling_CondoNoPermits() throws Exception{
+			ObjectMapper mapper= new ObjectMapper();
+			newOrder = NewOrder.getCondominiumInstance("2018-05-05");
+			newOrder.setAddress("123 Las Vegas Av");			
+			
+			String value = mapper.writeValueAsString(newOrder);
+			System.out.println(value);
+			assertTrue(value.contains("Las Vegas Av"));			
+		}
+		
+		@Test
+		public void testJSONUnMarshalling_NoCondoNoPermits() throws Exception{
+			ObjectMapper mapper= new ObjectMapper();
+			newOrder = NewOrder.getInstance();
+			newOrder.setAddress("123 Calle Av");
+			
+			String value = mapper.writeValueAsString(newOrder);
+			assertTrue(value.contains("123 Calle Av"));			
+		}
 }

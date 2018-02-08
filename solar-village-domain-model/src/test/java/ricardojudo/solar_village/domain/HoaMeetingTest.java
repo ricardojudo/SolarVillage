@@ -50,5 +50,4 @@ public class HoaMeetingTest {
 		assertEquals(days, 23);
 		
 	}
-	
 }

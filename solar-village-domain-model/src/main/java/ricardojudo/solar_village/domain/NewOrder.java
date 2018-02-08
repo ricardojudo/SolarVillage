@@ -8,6 +8,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import ricardojudo.solar_village.domain.PermitRequest.PermitType;
 
 public class NewOrder implements Serializable {
@@ -92,13 +94,15 @@ public class NewOrder implements Serializable {
 				+ govermentPermits + "]";
 	}
 
-	//
+	@JsonProperty("approved_by_hoa")
 	public void approvedByHoa() {
-		hoaMeeting.setApproved(Boolean.TRUE);
+		if(hoaMeeting!=null)
+			hoaMeeting.setApproved(Boolean.TRUE);
 	}
 
+	@JsonProperty("is_approved_by_hoa")
 	public boolean isApprovedByHoa() {
-		return hoaMeeting.isApproved();
+		return hoaMeeting != null && hoaMeeting.isApproved();
 	}
 
 	// State quetions
