@@ -3,17 +3,17 @@
     <repository>
       <include>true</include>
       <metadata>
-        <id>guvnor-m2-repo</id>
-        <url>http://localhost:8080/business-central/maven2/</url>
-        <source>PROJECT</source>
+        <id>enterprise</id>
+        <url>http://maven.repository.redhat.com/techpreview/all/</url>
+        <source>SETTINGS</source>
       </metadata>
     </repository>
     <repository>
       <include>true</include>
       <metadata>
-        <id>central</id>
-        <url>http://repo1.maven.org/maven2</url>
-        <source>SETTINGS</source>
+        <id>guvnor-m2-repo</id>
+        <url>http://localhost:8080/business-central/maven2/</url>
+        <source>PROJECT</source>
       </metadata>
     </repository>
     <repository>
@@ -27,22 +27,6 @@
     <repository>
       <include>true</include>
       <metadata>
-        <id>jboss-snapshot</id>
-        <url>http://repository.jboss.org/nexus/content/groups/public-jboss/</url>
-        <source>SETTINGS</source>
-      </metadata>
-    </repository>
-    <repository>
-      <include>true</include>
-      <metadata>
-        <id>jboss</id>
-        <url>http://repository.jboss.org/nexus/content/groups/public-jboss/</url>
-        <source>SETTINGS</source>
-      </metadata>
-    </repository>
-    <repository>
-      <include>true</include>
-      <metadata>
         <id>jboss-plugins</id>
         <url>http://repository.jboss.org/nexus/content/groups/public-jboss/</url>
         <source>SETTINGS</source>
@@ -51,8 +35,24 @@
     <repository>
       <include>true</include>
       <metadata>
-        <id>enterprise</id>
-        <url>http://maven.repository.redhat.com/techpreview/all/</url>
+        <id>jboss-snapshot</id>
+        <url>http://repository.jboss.org/nexus/content/groups/public-jboss/</url>
+        <source>SETTINGS</source>
+      </metadata>
+    </repository>
+    <repository>
+      <include>true</include>
+      <metadata>
+        <id>central</id>
+        <url>http://repo1.maven.org/maven2</url>
+        <source>SETTINGS</source>
+      </metadata>
+    </repository>
+    <repository>
+      <include>true</include>
+      <metadata>
+        <id>jboss</id>
+        <url>http://repository.jboss.org/nexus/content/groups/public-jboss/</url>
         <source>SETTINGS</source>
       </metadata>
     </repository>
