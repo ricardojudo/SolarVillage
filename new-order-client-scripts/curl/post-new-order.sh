@@ -4,6 +4,7 @@
 CONTAINER=http://0.0.0.0:8080/kie-server/services/rest/server/containers/solar-village
 
 URL=${CONTAINER}/processes/new-order-permitting-kjar.NewOrderProcess/instances
+#URL=${CONTAINER}/processes/new-order-permitting-kjar.NewOrder/instances
 DATA="'{\"address\":\"$1\", \"condo\":\"$2\", \"hoaMeetingDate\":\"$3\"}'"
 
 #echo "URL: ${URL}"
