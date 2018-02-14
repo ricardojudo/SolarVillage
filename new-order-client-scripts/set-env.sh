@@ -3,3 +3,4 @@ export KIE_USER_NAME=ricardojudo
 export KIE_PASSWORD=bpms
 export KIE_CONTAINER_ID=solar-village
 export CREDENTIALS=${KIE_USER_NAME}:${KIE_PASSWORD}
+export PRINT_CURL_COMMAND=true
