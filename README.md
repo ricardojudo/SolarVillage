@@ -45,7 +45,7 @@ If the order is not for a condominium or the HOA approves the installation then 
 
 Finally the approvals are evaluated and registered and the process finalizes logging the result.
 
-![alt NewOrderProcess](https://raw.githubusercontent.com/ricardojudo/SolarVillage/master/new-order-permitting-kjar/src/main/resources/ricardojudo/new_order_permitting_kjar/new-order-permitting-kjar.NewOrderProcess-svg.svg)
+![alt NewOrderProcess](https://raw.githubusercontent.com/ricardojudo/SolarVillage/master/new-order-permitting-kjar/src/main/resources/ricardojudo/new_order_permitting_kjar/new-order-permitting-kjar.NewOrderProcess-svg.svg?sanitize=true)
 
 #### Input Variables
 - `address`. The address where the installation will be made.
@@ -64,7 +64,7 @@ After every permit request is sent to the mock goverment services, there is a lo
 
 The next step is to send a signal back to the NewOrderProcess with the approval status of both permits. In case of one of the permits is denied the approval status is mark as false and a compensation activities are triggered, where the goverment services API is invoke for cancelling the previously requested permits.
 
-![alt GovermentPermitRequest](https://raw.githubusercontent.com/ricardojudo/SolarVillage/master/new-order-permitting-kjar/src/main/resources/ricardojudo/new_order_permitting_kjar/new-order-permitting-kjar.GovermentPermitRequest-svg.svg)
+![alt GovermentPermitRequest](https://raw.githubusercontent.com/ricardojudo/SolarVillage/master/new-order-permitting-kjar/src/main/resources/ricardojudo/new_order_permitting_kjar/new-order-permitting-kjar.GovermentPermitRequest-svg.svg?sanitize=true)
 
 #### Input Variables
 - `address`. The address for requesting the permits.
