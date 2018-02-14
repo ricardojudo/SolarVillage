@@ -76,7 +76,7 @@ As it was mentioned before, Mock Goverment Services for requesting permits were 
 |Method |Path                               |Description                                                        |
 |---    |---                                |---                                                                |
 |POST   |/permit_requests/create_electrical |Create a new electric permit request                               |
-|POST   |/permit_requests/create_structural |Create a new structura permit request                              |
+|POST   |/permit_requests/create_structural |Create a new structure permit request                              |
 |GET    |/permit_requests/{id}              |Retreive the status information for the permit identified by {id}  |
 |DELETE |/permit_requests/{id}              |Cancel the permit identified by {id}                               |
 
