@@ -5,7 +5,7 @@ source ./set-env.sh
 if [ $# -ne 2 ]; then
     echo "desc   : Complete a Hoa Meeting Task and set whether the order is approved or not"
     echo "usage  : $0 <task_id> <approved true|false>"
-    echo "example: $0 1 true
+    echo "example: $0 1 true"
     exit 1
 fi
 
