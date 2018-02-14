@@ -30,7 +30,7 @@ Every permit request can be in one of the three states that are modeled as the e
 ## New Order Permitting KJar and JBoss BPMS
 For setting up this demo in a local evironment its required a JBoss BPMS installation with some configuration. Indeed the demo was built on VirtualBox environment provided in the BPMS Advanced course hence some specific configurations for the demo were defined upon that environment.
     
-- It is necesary to define a group called _sales_ and at least one user who belongs to the _sales_ group.
+- It is necesary to define a group called _sales_ and at least one user who belongs to the _sales_ group. In my case, a user called _ricardojudo_ was defined.
 - For the client invocations via REST API is required a kie-server container called _solar-village_. In this container the new-order-permitting kjar should be deployed.
 - An SMTP resource is needed in order to send notifications. The simple SMPT server script and the settings of the _Human Task Escalation and Deadlines Lab_ were used for the development.
 
@@ -86,4 +86,89 @@ For convinience, this application is deployed in Heroku and is accesible at http
 
 
 ## Client scripts
-Once the project is build and deployed in a kie container called `solar-village`, is possible to create new orders, complete human tasks and retreive information through the client scripts. Every script contain curl invocations to the kie server API and allow different parameters depending on the action to be triggered.
+Once the project is build and deployed in a kie container called `solar-village`, is possible to create new orders, complete human tasks and retreive information through the client scripts. Every script contain curl invocations to the kie server API and allow different parameters depending on the action to be triggered. You can get some help when a script is executed without parameters.
+
+### set-env
+This script sets several variables used by the other scripts.
+
+```
+export KIE_SERVER_HOST=http://127.0.0.1:8080
+export KIE_USER_NAME=ricardojudo
+export KIE_PASSWORD=bpms
+export KIE_CONTAINER_ID=solar-village
+export CREDENTIALS=${KIE_USER_NAME}:${KIE_PASSWORD}
+export PRINT_CURL_COMMAND=true
+```
+
+
+### container-status
+Retreive information about the Kie Server, `solar-village` container and its definitions.
+
+```sh
+    ./container-status.sh
+```
+
+
+### post-new-order
+Start a new order process instance. Requires 3 parameters: address, whether the order is for a condominium in boolean value (true|false) and the hoaMeetingDate in format yyyy-MM-dd.
+
+```sh
+    usage  : ./post-new-order.sh <address> <condominium true|false> <hoaMeetingDate (yyyy-MM-dd)>
+    example: ./post-new-order.sh "25 Via Magna" true 2019-01-01
+```
+
+### list-new-orders
+Retreive a list of new order process instances by the given status. This status is given as a single parameter. Valid status are:1=IN_PROGRESS, 2=COMPLETED, 3=ABORTED
+
+```sh
+    usage  : ./list-new-orders.sh <status 1=IN_PROGRESS 2=COMPLETED 3=ABORTED>
+    example: ./list-new-orders.sh 1
+```
+
+### show-new-order
+Show the information of a new order process instance. The desired process instance is specified by the id.
+
+```sh
+    usage  : ./show-new-order.sh <pInstanceId>
+    example: ./show-new-order.sh 1
+```
+
+### delete-new-order
+Abort a new order process instance specified by its id.
+
+```
+    usage  : ./delete-new-order.sh <pInstanceId>
+    example: ./delete-new-order.sh 1
+```
+
+### list-hoa-meeting-tasks
+Retreive two list of tasks by potential and current owners
+
+```sh
+    usage  : ./list-hoa-meeting-tasks.sh <pot-owner-groups>
+    example: ./list-hoa-meeting-tasks.sh sales
+```
+
+### claim-hoa-meeting-task
+Claim and start a HOA Meeting task
+
+```sh   
+    usage  : ./claim-hoa-meeting-task.sh <task_id>
+    example: ./claim-hoa-meeting-task.sh 1
+```
+
+### complete-hoa-meeting-task
+Complete a Hoa Meeting Task and set whether the order is approved or not
+
+```sh
+    usage  : ./complete-hoa-meeting-task.sh <task_id> <approved true|false>
+    example: ./complete-hoa-meeting-task.sh 1 true
+```
+
+### show-hoa-meeting-task
+Show the information of a HOA Meeting Task
+
+```
+    usage  : ./show-hoa-meeting-task.sh <taskId>
+    example: ./show-hoa-meeting-task.sh 1
+```
