@@ -1,18 +1,24 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-  <a class="navbar-brand" href="#">Solar Village</a>
+  <a class="navbar-brand" href="#">
+    <img style="max-width:120px; margin-top: -7px;"
+    src="assets/logo.png">
+
+  </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarsExampleDefault">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">New Orders <span class="sr-only">(current)</span></a>
+      <li class="nav-item">
+        <a #newOrdersLink class="nav-link" href="#" routerLink="/new-orders" routerLinkActive="active">New Orders</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">HOA Meetings</a>
+        <a #hoaMeetingsLink class="nav-link" href="#" routerLink="/hoa-meetings" routerLinkActive="active">HOA Meetings</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Server</a>
+    </ul>
+    <ul class="navbar-nav navbar-right">
+    <li class="nav-item">
+        <a #serverInfo class="nav-link" href="#" routerLink="/server-info" routerLinkActive="active">Server Info</a>
       </li>
     </ul>
   </div>

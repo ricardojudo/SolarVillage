@@ -12,12 +12,18 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 
 import { InMemoryDataService } from "./services/in-memory-data.service";
+import { NewOrdersComponent } from './new-orders/new-orders.component';
+import { HoaMeetingsComponent } from './hoa-meetings/hoa-meetings.component';
+import { ServerInfoComponent } from './server-info/server-info.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent
+    NavbarComponent,
+    NewOrdersComponent,
+    HoaMeetingsComponent,
+    ServerInfoComponent
   ],
   imports: [
     BrowserModule,
