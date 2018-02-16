@@ -15,6 +15,7 @@ import { InMemoryDataService } from "./services/in-memory-data.service";
 import { NewOrdersComponent } from './new-orders/new-orders.component';
 import { HoaMeetingsComponent } from './hoa-meetings/hoa-meetings.component';
 import { ServerInfoComponent } from './server-info/server-info.component';
+import { NewOrderDetailComponent } from './new-order-detail/new-order-detail.component';
 
 
 @NgModule({
@@ -23,18 +24,19 @@ import { ServerInfoComponent } from './server-info/server-info.component';
     NavbarComponent,
     NewOrdersComponent,
     HoaMeetingsComponent,
-    ServerInfoComponent
+    ServerInfoComponent,
+    NewOrderDetailComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule.forRoot(),
-    HttpClientModule,
+    HttpClientModule
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // and returns simulated server responses.
     // Remove it when a real server is ready to receive requests.
-    HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService, { dataEncapsulation: false })
+    //HttpClientInMemoryWebApiModule.forRoot(
+    //  InMemoryDataService, { dataEncapsulation: false })
   ],
   providers: [],
   bootstrap: [AppComponent]

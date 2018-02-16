@@ -9,7 +9,7 @@ import { Location } from '@angular/common';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(public router: ActivatedRoute,
+  constructor(private router: ActivatedRoute,
     private location: Location) { }
 
   ngOnInit() {
