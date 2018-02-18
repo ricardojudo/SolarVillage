@@ -4,10 +4,11 @@ export class NewOrder{
     startDate: Date;
     state: string;
 
-    condominum: boolean;
-    hoaMeetingDate: Date;
+    address?: string;
+    condominum?: boolean;
+    hoaMeetingDate?: Date;
     
-    hoaApproved: boolean;
-    govApproved: boolean;
-    approved: boolean;
+    hoaApproved?: boolean;
+    govApproved?: boolean;
+    approved?: boolean;
 }

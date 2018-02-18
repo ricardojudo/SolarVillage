@@ -30,6 +30,7 @@ import { NewOrderDetailComponent } from './new-order-detail/new-order-detail.com
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     NgbModule.forRoot(),
     HttpClientModule
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests

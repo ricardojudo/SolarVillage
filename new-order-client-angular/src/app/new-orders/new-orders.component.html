@@ -1,3 +1,80 @@
-<p>
-  new-orders works!
-</p>
+<div class="btn-toolbar" role="toolbar">
+  <div class="btn-group mr-2" role="group">
+    <button class="btn btn-info">New Order</button>
+  </div>
+
+  <div class="btn-group  btn-group-toggle" ngbRadioGroup name="radioBasic" [(ngModel)]="newOrderStatus">
+    <label ngbButtonLabel class="btn-primary">
+      <input ngbButton type="radio" [value]="2"> Completed
+    </label>
+    <label ngbButtonLabel class="btn-primary">
+      <input ngbButton type="radio" [value]="1"> In Progress
+    </label>
+    <label ngbButtonLabel class="btn-primary">
+      <input ngbButton type="radio" [value]="3"> Aborted
+    </label>
+  </div>
+</div>
+
+<hr>
+
+<div class="new-order-form">
+<form>
+  <div class="form-group">
+    <input>
+  </div>
+  <input type="checkbox">
+
+
+</form>
+
+</div>
+
+<div class="row">
+<div class="col-md-8">
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Initiator</th>
+        <th>Start Date</th>
+        <th>State</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let newOrder of newOrders" (click)="showDetail(newOrder)">
+        <td>{{newOrder.id}}</td>
+        <td>{{newOrder.initiator}}</td>
+        <td>{{newOrder.startDate}}</td>
+        <td>{{newOrder.state}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="col-md-4">
+  <div class="card">
+    <div class="card-header">New Order</div>
+    <div class="card-body" *ngIf="selectedOrder">
+      <dl>
+        <dt>ID</dt>
+        <dd>{{selectedOrder.id}}</dd>
+        <dt>Address</dt>
+        <dd>{{selectedOrder.address}}</dd>
+        <dt>Condominium</dt>
+        <dd>{{selectedOrder.condominum}}</dd>
+        <dt *ngIf="selectedOrder.condominum">HOA Meeting Date</dt>
+        <dd *ngIf="selectedOrder.condominum">{{selectedOrder.hoaMeetingDate}}</dd>
+        <dt *ngIf="selectedOrder.condominum">HOA Approved</dt>
+        <dd *ngIf="selectedOrder.condominum">
+          <span>{{selectedOrder.hoaApproved}}</span>
+        </dd>        
+        <dt>Goverment Approved</dt>
+        <dd><span>{{selectedOrder.govApproved}}</span></dd>        
+        <dt>Approved</dt>
+        <dd><span>{{selectedOrder.approved}}</span></dd>        
+      </dl>
+      <button *ngIf="isInProgress()" class="btn btn-danger" (click)="abort()">Abort</button>
+    </div>
+  </div>
+</div>
+</div>
