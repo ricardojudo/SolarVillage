@@ -18,7 +18,11 @@ import { NewOrdersComponent } from './new-orders/new-orders.component';
 import { HoaMeetingsComponent } from './hoa-meetings/hoa-meetings.component';
 import { ServerInfoComponent } from './server-info/server-info.component';
 import { NewOrderDetailComponent } from './new-order-detail/new-order-detail.component';
+import { SignInComponent } from './sign-in/sign-in.component';
 
+import { UserService } from "./services/user.service";
+
+import { AuthGuard } from "./guards/auth-guard";
 
 @NgModule({
   declarations: [
@@ -27,7 +31,8 @@ import { NewOrderDetailComponent } from './new-order-detail/new-order-detail.com
     NewOrdersComponent,
     HoaMeetingsComponent,
     ServerInfoComponent,
-    NewOrderDetailComponent
+    NewOrderDetailComponent,
+    SignInComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +47,10 @@ import { NewOrderDetailComponent } from './new-order-detail/new-order-detail.com
     //HttpClientInMemoryWebApiModule.forRoot(
     //  InMemoryDataService, { dataEncapsulation: false })
   ],
-  providers: [],
+  providers: [
+    AuthGuard,
+    UserService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

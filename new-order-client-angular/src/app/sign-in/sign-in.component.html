@@ -1,0 +1,16 @@
+<div class="jumbotron">
+  <form>
+      <div class="form-group">
+          <label for="name">BPMS User:</label>
+          <input type="text" [(ngModel)]="user.name"
+            class="form-control" name="name">
+        </div>
+        <div class="form-group">
+          <label for="pwd">Password:</label>
+          <input type="password" [(ngModel)]="user.password"
+            class="form-control" name="password">
+        </div>
+        <button type="button" class="btn btn-primary"
+          (click)="signin()" >Sign in</button>
+  </form>  
+</div>
