@@ -22,12 +22,22 @@ export class HoaMeetingsComponent implements OnInit {
 
 
   getHoaMeetings(){
+    this.selectedMeeting = null;
     this.hoaMeetings = [
-      {id: 1, status: "ready"},
-      {id: 2, status: "completed"},
-      {id: 3, status: "in_progress"}
+      {id: 2, status: "completed", owner: 'ricardojudo'},
+      {id: 3, status: "in_progress", owner: 'ricardojudo'}
     ];
   }
+  
+  getPotentialMeetings(){
+    this.selectedMeeting = null;
+    this.hoaMeetings = [
+      {id: 1, status: "ready"},
+      {id: 4, status: "ready"},
+      {id: 5, status: "ready"}
+    ];
+  }
+
 
   showDetail(hoaMeeting){
     this.selectedMeeting = hoaMeeting;

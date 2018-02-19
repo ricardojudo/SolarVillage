@@ -5,13 +5,13 @@
 
   <div class="btn-group  btn-group-toggle" ngbRadioGroup name="radioBasic" [(ngModel)]="newOrderStatus">
     <label ngbButtonLabel class="btn-primary">
-      <input ngbButton type="radio" [value]="2"> Completed
+      <input ngbButton type="radio" [value]="2" (click)="getNewOrders(2)"> Completed
     </label>
     <label ngbButtonLabel class="btn-primary">
-      <input ngbButton type="radio" [value]="1"> In Progress
+      <input ngbButton type="radio" [value]="1" (click)="getNewOrders(1)"> In Progress
     </label>
     <label ngbButtonLabel class="btn-primary">
-      <input ngbButton type="radio" [value]="3"> Aborted
+      <input ngbButton type="radio" [value]="3" (click)="getNewOrders(3)"> Aborted
     </label>
   </div>
 </div>

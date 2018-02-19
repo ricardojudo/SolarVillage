@@ -21,15 +21,16 @@ export class NewOrdersComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.getNewOrders();
+    this.getNewOrders(2);
   }
 
-  getNewOrders(){
+  getNewOrders(state){
+    this.selectedOrder = null;
     this.newOrders = [
-      {id:1, initiator:"ricardo", startDate: new Date(), state: "1",condominum: true},
-      {id:2, initiator:"ricardo1", startDate: new Date(), state: "1",},
-      {id:3, initiator:"ricardo2", startDate: new Date(), state: "1", condominum: true,},
-      {id:4, initiator:"ricardo3", startDate: new Date(), state: "1",}
+      {id:1, initiator:"ricardo", startDate: new Date(), state: state,condominum: true},
+      {id:2, initiator:"ricardo1", startDate: new Date(), state: state,},
+      {id:3, initiator:"ricardo2", startDate: new Date(), state: state, condominum: true,},
+      {id:4, initiator:"ricardo3", startDate: new Date(), state: state,}
     ];
   }
 
