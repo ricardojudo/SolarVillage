@@ -9,21 +9,28 @@ import { NewOrder } from "../models/new-order";
 export class NewOrdersComponent implements OnInit {
 
   newOrderStatus=2;
+  isNewOrderFormShown=false;
+  newOrder:NewOrder;
 
   status = {"in_progress": 1, "completed": 2, "aborted": 3}
 
   selectedOrder: NewOrder;
 
-  newOrders: NewOrder[]=[
-    {id:1, initiator:"ricardo", startDate: new Date(), state: "1",condominum: true},
-    {id:2, initiator:"ricardo1", startDate: new Date(), state: "1",},
-    {id:3, initiator:"ricardo2", startDate: new Date(), state: "1", condominum: true,},
-    {id:4, initiator:"ricardo3", startDate: new Date(), state: "1",}
-  ];
+  newOrders: NewOrder[]
 
   constructor() { }
 
   ngOnInit() {
+    this.getNewOrders();
+  }
+
+  getNewOrders(){
+    this.newOrders = [
+      {id:1, initiator:"ricardo", startDate: new Date(), state: "1",condominum: true},
+      {id:2, initiator:"ricardo1", startDate: new Date(), state: "1",},
+      {id:3, initiator:"ricardo2", startDate: new Date(), state: "1", condominum: true,},
+      {id:4, initiator:"ricardo3", startDate: new Date(), state: "1",}
+    ];
   }
 
   isInProgress(){
@@ -45,4 +52,20 @@ export class NewOrdersComponent implements OnInit {
 
     this.selectedOrder = newOrder;  
   }
+
+  showNewOrderForm(){
+    this.isNewOrderFormShown=true;
+    this.newOrder=new NewOrder();
+  }
+
+  cancelNewOrder(){
+    this.isNewOrderFormShown=false;
+    this.newOrder=null;
+  }
+
+  submitNewOrder(){
+    alert(this.newOrder);
+    this.cancelNewOrder();
+  }
+
 }

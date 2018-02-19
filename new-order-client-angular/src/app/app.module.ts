@@ -5,6 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from "@angular/common/http";
 import { HttpClientInMemoryWebApiModule } from "angular-in-memory-web-api";
 
+import { Angular2FontawesomeModule } from 'angular2-fontawesome/angular2-fontawesome'
+
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -29,6 +31,7 @@ import { NewOrderDetailComponent } from './new-order-detail/new-order-detail.com
   ],
   imports: [
     BrowserModule,
+    Angular2FontawesomeModule,
     AppRoutingModule,
     FormsModule,
     NgbModule.forRoot(),

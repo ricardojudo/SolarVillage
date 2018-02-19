@@ -1,6 +1,6 @@
 <div class="btn-toolbar" role="toolbar">
   <div class="btn-group mr-2" role="group">
-    <button class="btn btn-info">New Order</button>
+    <button class="btn btn-info" (click)="showNewOrderForm()">New Order</button>
   </div>
 
   <div class="btn-group  btn-group-toggle" ngbRadioGroup name="radioBasic" [(ngModel)]="newOrderStatus">
@@ -18,14 +18,35 @@
 
 <hr>
 
-<div class="new-order-form">
+<div class="new-order-form jumbotron" *ngIf="isNewOrderFormShown">
 <form>
   <div class="form-group">
-    <input>
+    <label for="address">Address</label>
+    <textarea class="form-control" id="address" name="address" 
+      rows="3" placeholder="Enter address" [(ngModel)]="newOrder.address"></textarea>
   </div>
-  <input type="checkbox">
+  <div class="form-check">
+    <input id="condominium" [(ngModel)]="newOrder.condominium" 
+      class="form-check-input" type="checkbox" name="condominium">  
+    <label for="condominium">For condominium?</label>
+  </div>
 
-
+  <div class="form-group" *ngIf="newOrder.condominium">
+      <label for="hoaMeetingDate">HOA Meeting Date</label>
+      <div class="input-group">
+      <input class="form-control" id="hoaMeetingDate" [(ngModel)]="newOrder.hoaMeetingDate" 
+        name="hoaMeetingDate" ngbDatepicker #hoaMeetingDate="ngbDatepicker" 
+        readonly placeholder="yyyy-MM-dd" (click)="hoaMeetingDate.toggle()">
+      <div class="input-group-append">
+          <button class="btn btn-outline-secondary" (click)="hoaMeetingDate.toggle()" type="button">
+            <fa [name]="'calendar'"></fa>           
+          </button>
+        </div>
+      </div>
+  </div>
+  <button type="button" class="btn btn-info" (click)="submitNewOrder()">Submit</button>
+  <button type="reset" class="btn btn-default">Reset</button>
+  <button type="button" class="btn btn-default" (click)="cancelNewOrder()">Cancel</button>
 </form>
 
 </div>
