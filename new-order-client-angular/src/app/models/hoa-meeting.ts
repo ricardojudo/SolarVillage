@@ -1,7 +1,10 @@
 export class HoaMeeting{
     id: number;
-    date: Date;
-    owner: string;
+    owner?: string;
     status: string;
-    approved: boolean;
+
+
+    address?: string;
+    date?: Date;
+    approved: boolean = false;
 }
