@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+
+import { User } from "../models/user";
+import { UserService } from "../services/user.service";
+
 
 @Component({
   selector: 'app-navbar',
@@ -9,10 +13,22 @@ import { Location } from '@angular/common';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private router: ActivatedRoute,
+  currentUser: User;
+
+  constructor(private router: Router,
+    private userService: UserService,
     private location: Location) { }
 
   ngOnInit() {
+    this.userService.getCurrentUserSubscription((currentUser)=>{
+      this.currentUser=currentUser;
+    });
+  }
+
+  signOut(){
+    this.userService.signout();
+    this.currentUser=null;
+    this.router.navigate(['/sign-in']);
   }
 
 }
