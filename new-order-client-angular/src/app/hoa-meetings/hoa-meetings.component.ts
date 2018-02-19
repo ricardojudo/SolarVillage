@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 import { HoaMeeting } from "../models/hoa-meeting";
-
 import { HoaMeetingsService } from "../services/hoa-meetings.service";
+
 
 @Component({
   selector: 'app-hoa-meetings',
