@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { HoaMeeting } from "../models/hoa-meeting";
 
+import { HoaMeetingsService } from "../services/hoa-meetings.service";
+
 @Component({
   selector: 'app-hoa-meetings',
   templateUrl: './hoa-meetings.component.html',
@@ -14,7 +16,7 @@ export class HoaMeetingsComponent implements OnInit {
   hoaMeetings: HoaMeeting[];
   selectedMeeting: HoaMeeting;
 
-  constructor() { }
+  constructor(private hoaMeetingService: HoaMeetingsService) { }
 
   ngOnInit() {
     this.getHoaMeetings();

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NewOrder } from "../models/new-order";
 
+import { NewOrdersService } from "../services/new-orders.service";
+
 @Component({
   selector: 'app-new-orders',
   templateUrl: './new-orders.component.html',
@@ -18,7 +20,7 @@ export class NewOrdersComponent implements OnInit {
 
   newOrders: NewOrder[]
 
-  constructor() { }
+  constructor(private newOrdersService: NewOrdersService) { }
 
   ngOnInit() {
     this.getNewOrders(2);

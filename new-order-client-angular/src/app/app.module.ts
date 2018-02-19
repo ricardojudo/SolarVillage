@@ -21,6 +21,8 @@ import { NewOrderDetailComponent } from './new-order-detail/new-order-detail.com
 import { SignInComponent } from './sign-in/sign-in.component';
 
 import { UserService } from "./services/user.service";
+import { NewOrdersService } from "./services/new-orders.service";
+import { HoaMeetingsService } from "./services/hoa-meetings.service";
 
 import { AuthGuard } from "./guards/auth-guard";
 
@@ -49,6 +51,8 @@ import { AuthGuard } from "./guards/auth-guard";
   ],
   providers: [
     AuthGuard,
+    NewOrdersService,
+    HoaMeetingsService,
     UserService
   ],
   bootstrap: [AppComponent]
