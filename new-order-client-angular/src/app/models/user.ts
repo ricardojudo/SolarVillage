@@ -3,7 +3,7 @@ export class User{
     password:string
 
 
-    getCredencials(){
+    getCredentials(){
         return `${this.name}:${this.password}`
     }
 }

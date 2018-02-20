@@ -34,6 +34,15 @@ export class NewOrdersComponent implements OnInit {
       {id:3, initiator:"ricardo2", startDate: new Date(), state: state, condominum: true,},
       {id:4, initiator:"ricardo3", startDate: new Date(), state: state,}
     ];
+
+
+    this.newOrdersService.getNewOrders(state).subscribe((rawRecords) =>{
+        console.log(rawRecords);
+      }
+      
+    );
+
+
   }
 
   isInProgress(){
