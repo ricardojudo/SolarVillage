@@ -2,7 +2,7 @@ export class NewOrder{
     id: number;
     initiator: string;
     startDate: Date;
-    state: string;
+    status: string;
 
     address?: string;
     condominum?: boolean;

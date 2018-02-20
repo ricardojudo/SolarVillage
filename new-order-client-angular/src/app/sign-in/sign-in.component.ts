@@ -17,6 +17,8 @@ export class SignInComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit() {    
+    this.user.kieContainerName="solar-village"
+    this.user.kieServerHost="http://localhost:8080"
   }
 
   signin(){

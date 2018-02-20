@@ -49,8 +49,27 @@ export class InMemoryDataService implements InMemoryDataService{
       } ]
     }
     */
-    const foo = [];
-    return foo;
+    const newOrders=
+      [
+        {id:1, initiator:"ricardo", startDate: new Date(), status: 1, address: "123 Lust Av", condominum: true, hoaMeetingDate: new Date()},
+        {id:2, initiator:"ricardo_", startDate: new Date(), status: 1, address: "123 Wrath Av", condominum: false},
+        {id:3, initiator:"ricardo__", startDate: new Date(), status: 2, address: "123 Envy Av", condominum: true, hoaMeetingDate: new Date()},
+        {id:4, initiator:"ricardo_", startDate: new Date(), status: 2, address: "123 Pride Av", condominum: false},
+        {id:5, initiator:"ricardo__", startDate: new Date(), status: 3, address: "123 L Av", condominum: true, hoaMeetingDate: new Date()},
+        {id:6, initiator:"ricardo", startDate: new Date(), status: 3, address: "123 P Av", condominum: false}
+      ]
+
+
+    
+    const hoaMeetingTasks=[
+      {id: 2, status: "completed", owner: 'ricardojudo'},
+      {id: 3, status: "in_progress", owner: 'ricardojudo'},
+      {id: 1, status: "ready"},
+      {id: 4, status: "ready"},
+      {id: 5, status: "ready"},
+      {id: 6, status: "ready"}
+    ]
+    return {newOrders, hoaMeetingTasks}//[newOrders, hoaMeetingTasks];
   }
 
 }

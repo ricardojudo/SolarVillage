@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { HttpClientInMemoryWebApiModule } from "angular-in-memory-web-api";
 
 import { Angular2FontawesomeModule } from 'angular2-fontawesome/angular2-fontawesome'
@@ -23,6 +23,7 @@ import { SignInComponent } from './sign-in/sign-in.component';
 import { UserService } from "./services/user.service";
 import { NewOrdersService } from "./services/new-orders.service";
 import { HoaMeetingsService } from "./services/hoa-meetings.service";
+import { AuthInterceptor } from "./interceptors/auth-interceptor";
 
 import { AuthGuard } from "./guards/auth-guard";
 
@@ -46,14 +47,15 @@ import { AuthGuard } from "./guards/auth-guard";
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // and returns simulated server responses.
     // Remove it when a real server is ready to receive requests.
-    //HttpClientInMemoryWebApiModule.forRoot(
-    //  InMemoryDataService, { dataEncapsulation: false })
+    ,HttpClientInMemoryWebApiModule.forRoot(
+      InMemoryDataService, { dataEncapsulation: false })
   ],
   providers: [
     AuthGuard,
     NewOrdersService,
     HoaMeetingsService,
-    UserService
+    UserService,
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]
 })

@@ -28,19 +28,19 @@ export class NewOrdersComponent implements OnInit {
 
   getNewOrders(state){
     this.selectedOrder = null;
-    this.newOrders = [
-      {id:1, initiator:"ricardo", startDate: new Date(), state: state,condominum: true},
-      {id:2, initiator:"ricardo1", startDate: new Date(), state: state,},
-      {id:3, initiator:"ricardo2", startDate: new Date(), state: state, condominum: true,},
-      {id:4, initiator:"ricardo3", startDate: new Date(), state: state,}
+    /*this.newOrders = [
+      {id:1, initiator:"ricardo", startDate: new Date(), status: state,condominum: true},
+      {id:2, initiator:"ricardo1", startDate: new Date(), status: state,},
+      {id:3, initiator:"ricardo2", startDate: new Date(), status: state, condominum: true,},
+      {id:4, initiator:"ricardo3", startDate: new Date(), status: state,}
     ];
-
-
+    */
     this.newOrdersService.getNewOrders(state).subscribe((rawRecords) =>{
-        console.log(rawRecords);
-      }
-      
-    );
+      //console.log(rawRecords);
+      this.newOrders = rawRecords;
+    }
+    
+  );
 
 
   }
@@ -50,19 +50,19 @@ export class NewOrdersComponent implements OnInit {
   }
 
   abort(){
-    alert(`abort condominium: ${this.selectedOrder.condominum}`);
+    this.newOrdersService.deleteNewOrder(this.selectedOrder.id).subscribe(()=>{
+      this.newOrderStatus=3;
+      this.isNewOrderFormShown=false;
+      this.newOrder=null;
+      this.getNewOrders(3);
+    });
   }
 
   showDetail(newOrder:NewOrder){
     //TODO Get details from service in async form
-
-    newOrder.address = "30 Nogales";
-   
-    newOrder.govApproved = false;
-    newOrder.hoaApproved = true;
-    newOrder.hoaMeetingDate = new Date();
-
-    this.selectedOrder = newOrder;  
+    this.newOrdersService.showNewOrder(newOrder.id).subscribe((_newOrder) =>{
+      this.selectedOrder = newOrder;  
+    });
   }
 
   showNewOrderForm(){
@@ -71,13 +71,17 @@ export class NewOrdersComponent implements OnInit {
   }
 
   cancelNewOrder(){
-    this.isNewOrderFormShown=false;
-    this.newOrder=null;
+      this.isNewOrderFormShown=false;
+      this.newOrder=null; 
   }
 
   submitNewOrder(){
-    alert(this.newOrder);
-    this.cancelNewOrder();
+    this.newOrdersService.createNewOrder(this.newOrder).subscribe(()=>{
+      this.newOrderStatus = 2;
+      this.getNewOrders(2);
+      this.cancelNewOrder();
+    });
+    
   }
 
 }

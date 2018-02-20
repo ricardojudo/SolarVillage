@@ -21,7 +21,7 @@ export class UserService {
 
   getCurrentUser():User{
     let _user = localStorage.getItem("currentUser");
-    let user:User = JSON.parse(_user);
+    let user:User = Object.setPrototypeOf(JSON.parse(_user), User.prototype);
     this.userObserver.next(user);
     return user;
   }
@@ -44,6 +44,14 @@ export class UserService {
     let credentials=`${_user.name}:${_user.password}`
     headers.append('Authorization',`Basic: ${btoa(credentials)}`)
     return headers;
+  }
+
+  getBasicAuthValue(){
+    let user = this.getCurrentUser();
+    //console.log(">>> User: "+ user);
+    let credentials=this.getCurrentUser().getCredentials();
+    let basicCredentials=`Basic: ${btoa(credentials)}`;
+    return basicCredentials;
   }
 
 }

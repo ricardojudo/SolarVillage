@@ -22,10 +22,29 @@ export class NewOrdersService {
               private userService: UserService) { }
 
 
-  getNewOrders(status):Observable<any>{
-    let url = `${kieServerHost}/kie-server/services/rest/server/queries/processes/new-order-permitting-kjar.NewOrderProcess/instances?status=${status}`
-    let authHeaders = this.userService.getCurrentAuthHeaders();
-    return this.http.get(url, {headers: authHeaders});
+  baseUrl = "api/newOrders";
+
+  getNewOrders(status):Observable<NewOrder[]>{
+    //let url = `${kieServerHost}/kie-server/services/rest/server/queries/processes/new-order-permitting-kjar.NewOrderProcess/instances?status=${status}`
+    //let authHeaders = this.userService.getCurrentAuthHeaders();
+    let url=`${this.baseUrl}?status=${status}`
+    return this.http.get<NewOrder[]>(url);
+  }
+
+  showNewOrder(id):Observable<NewOrder>{
+    let url=`${this.baseUrl}/${id}`
+    return this.http.get<NewOrder>(url);
+  }
+
+  createNewOrder(newOrder): Observable<any>{
+    let url=`${this.baseUrl}`;
+    return this.http.post(url,newOrder,httpOptions);
+  }
+
+  deleteNewOrder(id): Observable<any>{
+    let url=`${this.baseUrl}/${id}`
+    console.log(url)
+    return this.http.delete(url);
   }
 
 
