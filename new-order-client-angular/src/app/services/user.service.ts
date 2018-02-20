@@ -21,7 +21,7 @@ export class UserService {
 
   getCurrentUser():User{
     let _user = localStorage.getItem("currentUser");
-    let user:User = Object.setPrototypeOf(JSON.parse(_user), User.prototype);
+    let user:User = _user ? Object.setPrototypeOf(JSON.parse(_user), User.prototype) : null;
     this.userObserver.next(user);
     return user;
   }

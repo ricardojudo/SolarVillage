@@ -62,7 +62,7 @@
         <th>State</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody *ngIf="newOrders">
       <tr *ngFor="let newOrder of newOrders" (click)="showDetail(newOrder)">
         <td>{{newOrder.id}}</td>
         <td>{{newOrder.initiator}}</td>
