@@ -40,9 +40,7 @@ export class UserService {
   }
 
   appendCurrentAuthHeaders(headers: HttpHeaders){
-    let _user = this.getCurrentUser();
-    let credentials=`${_user.name}:${_user.password}`
-    headers.append('Authorization',`Basic: ${btoa(credentials)}`)
+   headers.append('Authorization',this.getBasicAuthValue())
     return headers;
   }
 
@@ -50,7 +48,7 @@ export class UserService {
     let user = this.getCurrentUser();
     //console.log(">>> User: "+ user);
     let credentials=this.getCurrentUser().getCredentials();
-    let basicCredentials=`Basic: ${btoa(credentials)}`;
+    let basicCredentials=`Basic ${btoa(credentials)}`;
     return basicCredentials;
   }
 

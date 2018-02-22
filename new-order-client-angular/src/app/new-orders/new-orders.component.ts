@@ -61,7 +61,7 @@ export class NewOrdersComponent implements OnInit {
   showDetail(newOrder:NewOrder){
     //TODO Get details from service in async form
     this.newOrdersService.showNewOrder(newOrder.id).subscribe((_newOrder) =>{
-      this.selectedOrder = newOrder;  
+      this.selectedOrder = _newOrder;  
     });
   }
 
