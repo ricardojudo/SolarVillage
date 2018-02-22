@@ -13,7 +13,11 @@ router.get('/', (req, res) => {
 /* NewOrders */
 
 var buildNewOrders=(data)=>{
-    return [];
+    let newOrders = []
+    for(i=0; i<data.lenght; i++){
+        newOrders.push(buildNewOrder(data[i]))
+    }
+    return newOrders;
 }
 var buildNewOrder=(data)=>{
     return {};
