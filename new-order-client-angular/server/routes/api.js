@@ -34,16 +34,9 @@ var buildNewOrders=(data)=>{
     return newOrders;
 }
 var buildNewOrderDetails=(id,data)=>{
-    //console.log(data)
-
     let variables = data['variable-instance'];
     var details = {}
-    for(i=0; i< variables.length; i++){
-        var e= variables[i]
-        details[e.name]= e.value
-    }
-
-    console.log(details)
+    variables.forEach(e => details[e.name]= e.value );
     return {
         'id': id,
         'address': details['address'],
@@ -67,8 +60,6 @@ router.get('/newOrders', (req, res) => {
     //const url=`http://192.168.56.101:8080/kie-server/services/rest/server/queries/processes/new-order-permitting-kjar.NewOrderProcess/instances?status=${status}`
     const url=`${kieServerHost}/kie-server/services/rest/server/queries/processes/new-order-permitting-kjar.NewOrderProcess/instances?status=${status}`
     
-    console.log("Header: " + kieServerHost)
-    console.log("URL: " + url)
 
     let headers = {
         'Authorization': authorization,
@@ -93,14 +84,12 @@ router.get('/newOrders', (req, res) => {
 
 router.get('/newOrders/:id', (req, res) => {
     const id=req.params['id']
-    console.log('id' +id)
+    
     const kieServerHost = req.headers['kieserverhost']
     const kieContainerName = req.headers['kiecontainername']
     const authorization = req.headers['authorization']
     //const url=`${kieServerHost}/kie-server/services/rest/server/containers/${kieContainerName}/processes/instances/${id}`
-    const url = `${kieServerHost}/kie-server/services/rest/server/queries/processes/instances/${id}/variables/instances
-    `
-    console.log("<<<<"+ url)
+    const url = `${kieServerHost}/kie-server/services/rest/server/queries/processes/instances/${id}/variables/instances`
 
     let headers = {
         'Authorization': authorization,
@@ -108,8 +97,6 @@ router.get('/newOrders/:id', (req, res) => {
     };
     axios.get(url, {headers: headers}).then((response) => {
         var newOrder = buildNewOrderDetails(id,response.data)
-        console.log("~~~~~~~~~~~~~~~~~~~~~~")
-        console.log(newOrder)
         res.json(newOrder);
     }).catch((error)=>{ 
         console.error(error.response.status);
@@ -133,7 +120,7 @@ router.delete('/newOrders/:id', (req, res) => {
         res.json();
     }).catch((error)=>{ 
         console.error(error);
-        res.status(422).json([]);
+        res.status(error.response.status).json(error.response.body);
     });
 });
 
@@ -148,18 +135,18 @@ router.post('/newOrders', (req, res) => {
         'Content-Type': 'application/json'
     };
 
+    console.log(req.body)
+
     let params = {
-        'address':req.params['address'],
-        'condo': req.params['condo'],
+        'address': req.body['address'],
+        'condo': 'false',//req.params['condo'],
         'hoaMeetingDate': req.params['hoaMeetingDate']
     }
-
 
     axios.post(url,params, {headers: headers}).then((response) => {        
         res.json(respose);
     }).catch((error)=>{ 
-        console.error(error);
-        res.status(422).json([]);
+        res.status(error.response.status).json(error.response.data);
     });
 });
 

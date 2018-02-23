@@ -5,8 +5,8 @@ export class NewOrder{
     status: string;
 
     address?: string;
-    condominum?: boolean;
-    hoaMeetingDate?: Date;
+    condominum?: boolean = false;
+    hoaMeetingDate?: string;
     
     hoaApproved?: boolean;
     govApproved?: boolean;

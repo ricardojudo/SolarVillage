@@ -1,12 +1,20 @@
 import { Component, OnInit } from '@angular/core';
+import {NgbDateAdapter, NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
+
 import { NewOrder } from "../models/new-order";
+import { HoaMeetingDateAdapter } from "./hoa-meeting-date-adapter";
+
+
+
+
 
 import { NewOrdersService } from "../services/new-orders.service";
 
 @Component({
   selector: 'app-new-orders',
   templateUrl: './new-orders.component.html',
-  styleUrls: ['./new-orders.component.css']
+  styleUrls: ['./new-orders.component.css'],
+  providers: [{provide: NgbDateAdapter, useClass: HoaMeetingDateAdapter}]
 })
 export class NewOrdersComponent implements OnInit {
 
@@ -76,10 +84,11 @@ export class NewOrdersComponent implements OnInit {
   }
 
   submitNewOrder(){
+    this.newOrder.condominum = this.newOrder.condominum ? true : false
     this.newOrdersService.createNewOrder(this.newOrder).subscribe(()=>{
       this.newOrderStatus = 2;
-      this.getNewOrders(2);
       this.cancelNewOrder();
+      this.getNewOrders(2);
     });
     
   }
