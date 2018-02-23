@@ -83,12 +83,17 @@
         <dd>{{selectedOrder.address}}</dd>
         <dt>Condominium</dt>
         <dd>{{selectedOrder.condominum}}</dd>
-        <dt *ngIf="selectedOrder.condominum">HOA Meeting Date</dt>
-        <dd *ngIf="selectedOrder.condominum">{{selectedOrder.hoaMeetingDate}}</dd>
-        <dt *ngIf="selectedOrder.condominum">HOA Approved</dt>
-        <dd *ngIf="selectedOrder.condominum">
+      </dl>
+
+      <dl *ngIf="selectedOrder.condominum == 'true'">        
+        <dt>HOA Meeting Date</dt>
+        <dd>{{selectedOrder.hoaMeetingDate}}</dd>
+        <dt>HOA Approved</dt>
+        <dd>
           <span>{{selectedOrder.hoaApproved}}</span>
-        </dd>        
+        </dd>
+      </dl>
+      <dl *ngIf="newOrderStatus == 2" >
         <dt>Goverment Approved</dt>
         <dd><span>{{selectedOrder.govApproved}}</span></dd>        
         <dt>Approved</dt>

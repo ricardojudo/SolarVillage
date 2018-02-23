@@ -6,5 +6,7 @@ export class HoaMeeting{
 
     address?: string;
     date?: Date;
-    approved?: boolean = false;
+    approved: boolean = false;
+    noStartedReassign?:string
+    skippable?: boolean
 }

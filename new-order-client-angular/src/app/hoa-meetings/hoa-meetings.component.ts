@@ -48,7 +48,7 @@ export class HoaMeetingsComponent implements OnInit {
 
 
   showDetail(hoaMeeting){
-    this.hoaMeetingService.showDetail(hoaMeeting.id).subscribe((_hoaMeeting)=>{
+    this.hoaMeetingService.showDetail(hoaMeeting).subscribe((_hoaMeeting)=>{
       this.selectedMeeting = _hoaMeeting;
     })
   }

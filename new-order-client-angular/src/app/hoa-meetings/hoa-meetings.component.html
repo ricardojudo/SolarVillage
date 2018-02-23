@@ -3,8 +3,8 @@
     <label ngbButtonLabel class="btn-primary">
       <input ngbButton type="radio" [value]="0" (click)="getHoaMeetings()"> My Meetings
     </label>
-    <label ngbButtonLabel class="btn-primary" (click)="getPotentialMeetings()">
-      <input ngbButton type="radio" [value]="1" > Potential Meetings
+    <label ngbButtonLabel class="btn-primary">
+      <input ngbButton type="radio" [value]="1" (click)="getPotentialMeetings()"> Potential Meetings
     </label>
   </div>
 </div>
@@ -36,13 +36,19 @@
           <dl>
             <dt>ID</dt>
             <dd>{{selectedMeeting.id}}</dd>
+            <dt>Status</dt>
+            <dd>{{selectedMeeting.status}}</dd>
             <dt>Address</dt>
             <dd>{{selectedMeeting.address}}</dd>
             <dt>Date</dt>
             <dd>{{selectedMeeting.date}}</dd>
+            <dt>No Started Reassign</dt>
+            <dd>{{selectedMeeting.noStartedReassign}}</dd>
+            <dt>Skippable</dt>
+            <dd>{{selectedMeeting.skippable}}</dd>
           </dl>
           
-          <div class="output-vars" *ngIf="selectedMeeting.status === 'in_progress'">
+          <div class="output-vars" *ngIf="selectedMeeting.status === 'InProgress'">
             <hr>
             <form>
               <fieldset class="form-group">
@@ -64,9 +70,9 @@
           </div>
           <hr>
           <div class="toolbar">
-            <button *ngIf="selectedMeeting.status === 'ready'"
+            <button *ngIf="selectedMeeting.status === 'Ready'"
               class="btn btn-primary" (click)="claim()">Claim</button>
-            <button *ngIf="selectedMeeting.status === 'in_progress'"
+            <button *ngIf="selectedMeeting.status === 'InProgress'"
               class="btn btn-primary" (click)="complete()">Complete</button>
           </div>          
         </div>

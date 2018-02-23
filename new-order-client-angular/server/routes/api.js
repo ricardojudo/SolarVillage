@@ -17,7 +17,7 @@ router.get('/', (req, res) => {
 var buildNewOrders=(data)=>{
     let newOrders = []
     let procesesInstance = data['process-instance']
-    console.log(procesesInstance)
+    
     for(i=0; i<procesesInstance.length; i++){
         p=procesesInstance[i]
         newOrders.push(
@@ -30,7 +30,6 @@ var buildNewOrders=(data)=>{
             }
         )
     }
-    console.log(newOrders)
     return newOrders;
 }
 var buildNewOrderDetails=(id,data)=>{
@@ -76,10 +75,8 @@ router.get('/newOrders', (req, res) => {
     }).catch((error) => {
         //console.error(error.request);
         console.error(error);
-        res.status(422).json([]);
+        res.status(error.response.status).json(error.response.body);
     });
-    //console.log(req.headers)
-    
 });
 
 router.get('/newOrders/:id', (req, res) => {
@@ -99,8 +96,7 @@ router.get('/newOrders/:id', (req, res) => {
         var newOrder = buildNewOrderDetails(id,response.data)
         res.json(newOrder);
     }).catch((error)=>{ 
-        console.error(error.response.status);
-        res.status(422).json([]);
+        res.status(error.response.status).json(error.response.body);
     });
 });
 
@@ -136,11 +132,10 @@ router.post('/newOrders', (req, res) => {
     };
 
     console.log(req.body)
-
     let params = {
         'address': req.body['address'],
-        'condo': 'false',//req.params['condo'],
-        'hoaMeetingDate': req.params['hoaMeetingDate']
+        'condo': `${req.body['condominium']}`,
+        'hoaMeetingDate': req.body['hoaMeetingDate']
     }
 
     axios.post(url,params, {headers: headers}).then((response) => {        
@@ -155,7 +150,20 @@ router.post('/newOrders', (req, res) => {
 /*HOA Meetings */
 
 var buildHoaMeetings = (data) => {
-    return [];
+    //console.log(data)
+   
+    let hoaMeetings = []
+    let tasks = data['task-summary']
+    
+    tasks.forEach((item) =>{
+        hoaMeetings.push({
+            'id': item['task-id'],
+            'owner': item['task-actual-owner'],
+            'status': item['task-status']
+        })
+    })
+   
+    return hoaMeetings;
 }
 
 var buildHoaMeeting = (data) => {
@@ -166,31 +174,28 @@ router.get('/hoaMeetings', (req, res) => {
     const kieServerHost = req.headers['kieserverhost']
     const authorization = req.headers['authorization']
     
-    const url=`URL=${kieServerHost}/kie-server/services/rest/server/queries/tasks/instances/owners`
-    console.log("<<<<"+ url)
-
+    const url=`${kieServerHost}/kie-server/services/rest/server/queries/tasks/instances/owners`
+    
     let headers = {
         'Authorization': authorization,
         'Content-Type': 'application/json'
     };
-
-    axios.get(url, {headers: headers}).then((response) => {
+    axios.get(url, {headers: headers}).then((response) => {        
         var hoaMeetings = buildHoaMeetings(response.data)
-        res.json(hoaMeetings);
+        res.json([]);
     }).catch((error)=>{ 
-        console.error(error);
-        res.status(422).json([]);
+        console.log(error)
+        res.status(error.response.status).json(error.response.body);
     });
 });
 
 router.get('/hoaMeetings/potential', (req, res) => {
-    const groups=req.query['groups']
+    const groups="sales"//req.query['groups']
     const kieServerHost = req.headers['kieserverhost']
     const kieContainerName = req.headers['kiecontainername']
     const authorization = req.headers['authorization']
     const url=`${kieServerHost}/kie-server/services/rest/server/queries/tasks/instances/pot-owners?groups=${groups}`    
-
-    console.log("<<<<"+ url)
+    console.log(url)
 
     let headers = {
         'Authorization': authorization,
@@ -201,8 +206,7 @@ router.get('/hoaMeetings/potential', (req, res) => {
         var hoaMeetings = buildHoaMeetings(response.data)
         res.json(hoaMeetings);
     }).catch((error)=>{ 
-        console.error(error);
-        res.status(422).json([]);
+        res.status(error.response.status).json(error.response.body);
     });
 });
 
@@ -229,7 +233,7 @@ router.get('/hoaMeetings/:id', (req, res) => {
     }
 
     let getVars=(callback)=>{
-        axios.get(url, {headers: headers}).then((response) => {
+        axios.get(urlVars, {headers: headers}).then((response) => {
             callback(null, response)
         }).catch((error)=>{ 
            callback(error,null)
@@ -239,12 +243,24 @@ router.get('/hoaMeetings/:id', (req, res) => {
     async.parallel([getDetails,getVars], (err, results)=>{
         if(err){
             console.log(err)
-            res.status(422).json({})
+            res.status(error.response.status).json(error.response.body);
             return;
         }
 
-        console.log(results)
-        res.json({});
+        var data = results[0].data;
+        var vars = results[1].data;
+
+        var details = {
+            'id': data['task-id'],
+            'owner': data['task-actual-owner'],
+            'status': data['task-status'],
+            'address': vars['address'],
+            'date': vars['date'],            
+            'noStartedReassign':  vars['NotStartedReassign'],
+            'skippable':  vars['Skippable']
+        };
+
+        res.json(details);
     });    
 });
 
@@ -280,16 +296,15 @@ router.put('/hoaMeetings/:id/claimed', (req, res) => {
 
     async.series([claim, start],(err,results) => {
         if(err){
-            res.status(422).json({});
+            res.status(error.response.status).json(error.response.body);
             return;
         }
-
         res.json({});
     })
    
 });
 
-router.put('/hoaMeetings/:id/closed', (req, res) => {
+router.put('/hoaMeetings/:id/completed', (req, res) => {
     const taskId = req.params['id']
     const kieServerHost = req.headers['kieserverhost']
     const kieContainerName = req.headers['kiecontainername']
@@ -299,14 +314,14 @@ router.put('/hoaMeetings/:id/closed', (req, res) => {
         'Content-Type': 'application/json'
     };
 
-    let url=`${kieServerHost}/kie-server/services/rest/server/containers/${kieContainerName}/tasks/${taskId}/states/claimed`
+    let url=`${kieServerHost}/kie-server/services/rest/server/containers/${kieContainerName}/tasks/${taskId}/states/completed`
    
-    var data = {'approved':req.params.approved}    
+    var data = {'approved':`${req.body.approved}`}    
 
     axios.put(url, data, {headers: headers}).then((response) => {
         req.json({});
     }).catch((error)=>{
-        req.status(422).json({})
+        res.status(error.response.status).json(error.response.body);
     })
 });
 

@@ -21,8 +21,8 @@ export class HoaMeetingsService {
   constructor(private http: HttpClient,
     private userService: UserService) { }
 
-    showDetail(id): Observable<HoaMeeting>{
-      let url = `${this.baseUrl}`
+    showDetail(hoaMeeting): Observable<HoaMeeting>{
+      let url = `${this.baseUrl}/${hoaMeeting.id}`
       return this.http.get<HoaMeeting>(url)
     }
 
